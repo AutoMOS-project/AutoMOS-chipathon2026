@@ -58,8 +58,8 @@ set color0 = white
 *************************************
 
 let Vdd   = 3.3
-let Vcm   = 0.5
-let Ibias = 1u
+let Vcm   = 1.65
+let Ibias = 0.5u
 
 *************************************
 ** SOURCES
@@ -325,8 +325,8 @@ C {gnd.sym} 2360 -1090 0 0 {name=l11 lab=GND}
 C {lab_wire.sym} 2240 -1270 0 0 {name=p9 sig_type=std_logic lab=Vout1}
 C {lab_wire.sym} 2240 -1230 0 0 {name=p10 sig_type=std_logic lab=Vout2}
 C {symbols/pfet_03v3.sym} 1280 -990 0 1 {name=M14
-L=10u
-W=1u
+L=2u
+W=14u
 nf=1
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
@@ -341,7 +341,7 @@ spiceprefix=X
 C {isource.sym} 1260 -870 0 0 {name=I0 value=1u}
 C {vdd.sym} 1260 -1060 0 0 {name=l12 lab=VDD}
 C {title-2.sym} 0 0 0 0 {name=l1 author="Julio Vilca" rev=1.0 lock=true page=1 pages=7}
-C {launcher.sym} 1580 -1410 0 0 {name=h1
+C {launcher.sym} 1590 -1410 0 0 {name=h1
 descr=Annotate OP
 tclcommand="xschem annotate_op"}
 C {libs/core_ina/ina_ota/ina_ota.sym} 2080 -1250 0 0 {name=x1}
