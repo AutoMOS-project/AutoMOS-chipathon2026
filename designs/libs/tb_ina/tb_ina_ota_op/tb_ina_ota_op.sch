@@ -326,7 +326,7 @@ C {lab_wire.sym} 2240 -1270 0 0 {name=p9 sig_type=std_logic lab=Vout1}
 C {lab_wire.sym} 2240 -1230 0 0 {name=p10 sig_type=std_logic lab=Vout2}
 C {symbols/pfet_03v3.sym} 1280 -990 0 1 {name=M14
 L=2u
-W=14u
+W=2u
 nf=1
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"

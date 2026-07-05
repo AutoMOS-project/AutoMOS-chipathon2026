@@ -53,7 +53,7 @@ N 1460 -1740 2100 -1740 {lab=VDD}
 C {title-2.sym} 0 0 0 0 {name=l1 author="Julio Vilca" rev=1.0 lock=true page=1 pages=1}
 C {symbols/pfet_03v3.sym} 1560 -1650 0 1 {name=M1
 L=2u
-W=14u
+W=2u
 nf=1
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"

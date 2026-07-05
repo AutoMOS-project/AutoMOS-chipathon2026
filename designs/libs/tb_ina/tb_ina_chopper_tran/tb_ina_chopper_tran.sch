@@ -20,12 +20,12 @@ N 1190 -960 1260 -960 {lab=CLK}
 N 1190 -940 1260 -940 {lab=CLKb}
 N 840 -1000 840 -960 {lab=Vin2}
 N 840 -900 840 -860 {lab=GND}
-N 1460 -990 1640 -990 {lab=Vout1}
-N 1640 -990 1640 -910 {lab=Vout1}
-N 1460 -950 1560 -950 {lab=Vout2}
-N 1560 -950 1560 -910 {lab=Vout2}
-N 1560 -850 1560 -810 {lab=GND}
-N 1640 -850 1640 -810 {lab=GND}
+N 1460 -980 1640 -980 {lab=Vout1}
+N 1640 -980 1640 -900 {lab=Vout1}
+N 1460 -960 1560 -960 {lab=Vout2}
+N 1560 -960 1560 -920 {lab=Vout2}
+N 1560 -860 1560 -820 {lab=GND}
+N 1640 -840 1640 -800 {lab=GND}
 C {title-3.sym} 0 0 0 0 {name=l1 author="Julio Vilca" rev=1.0 lock=true page=1 pages=7}
 C {simulator_commands.sym} 190 -1240 0 0 {name=MODELS
 simulator=ngspice
@@ -146,18 +146,18 @@ C {gnd.sym} 540 -860 0 0 {name=l8 lab=GND}
 C {vsource.sym} 840 -930 0 0 {name=V3 value=1.65 savecurrent=false}
 C {lab_wire.sym} 840 -980 0 0 {name=p2 sig_type=std_logic lab=Vin2}
 C {gnd.sym} 840 -860 0 0 {name=l9 lab=GND}
-C {capa.sym} 1560 -880 0 0 {name=C2
+C {capa.sym} 1560 -890 0 0 {name=C2
 m=1
 value=1p
 footprint=1206
 device="ceramic capacitor"}
-C {capa.sym} 1640 -880 0 0 {name=C1
+C {capa.sym} 1640 -870 0 0 {name=C1
 m=1
 value=1p
 footprint=1206
 device="ceramic capacitor"}
-C {gnd.sym} 1560 -810 0 0 {name=l10 lab=GND}
-C {gnd.sym} 1640 -810 0 0 {name=l11 lab=GND}
-C {lab_wire.sym} 1520 -990 0 0 {name=p9 sig_type=std_logic lab=Vout1}
-C {lab_wire.sym} 1520 -950 0 0 {name=p10 sig_type=std_logic lab=Vout2}
+C {gnd.sym} 1560 -820 0 0 {name=l10 lab=GND}
+C {gnd.sym} 1640 -800 0 0 {name=l11 lab=GND}
+C {lab_wire.sym} 1520 -980 0 0 {name=p9 sig_type=std_logic lab=Vout1}
+C {lab_wire.sym} 1520 -960 0 0 {name=p10 sig_type=std_logic lab=Vout2}
 C {libs/core_ina/ina_chopper/ina_chopper.sym} 1360 -970 0 0 {name=x1}

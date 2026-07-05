@@ -11,17 +11,17 @@ N 1070 -1180 1070 -1140 {lab=GND}
 N 1890 -1350 1890 -1320 {lab=VDD}
 N 1890 -1180 1890 -1150 {lab=GND}
 N 1070 -840 1070 -800 {lab=GND}
-N 1720 -1280 1790 -1280 {lab=Vin1}
+N 1720 -1270 1790 -1270 {lab=Vin1}
 N 1720 -1250 1790 -1250 {lab=Vin2}
-N 1720 -1220 1790 -1220 {lab=Vtail}
+N 1720 -1230 1790 -1230 {lab=Vtail}
 N 1370 -1280 1370 -1240 {lab=Vin2}
 N 1370 -1180 1370 -1140 {lab=GND}
-N 1990 -1270 2170 -1270 {lab=Vout1}
-N 2170 -1270 2170 -1190 {lab=Vout1}
-N 1990 -1230 2090 -1230 {lab=Vout2}
-N 2090 -1230 2090 -1190 {lab=Vout2}
-N 2090 -1130 2090 -1090 {lab=GND}
-N 2170 -1130 2170 -1090 {lab=GND}
+N 1990 -1260 2170 -1260 {lab=Vout1}
+N 2170 -1260 2170 -1180 {lab=Vout1}
+N 1990 -1240 2090 -1240 {lab=Vout2}
+N 2090 -1240 2090 -1200 {lab=Vout2}
+N 2090 -1140 2090 -1100 {lab=GND}
+N 2170 -1120 2170 -1080 {lab=GND}
 N 1070 -1060 1070 -1020 {lab=VDD}
 N 1050 -990 1070 -990 {lab=VDD}
 N 1050 -1040 1050 -990 {lab=VDD}
@@ -68,14 +68,14 @@ let fecg = 100
 ** BIAS PARAMETERS
 *************************************
 
-let Ibias = 10u
+let Ibias = 1u
 
 *************************************
 ** TRANSIENT PARAMETERS
 *************************************
 
 let tstop = 10m
-let tstep = 100n
+let tstep = 1u
 
 *************************************
 ** SOURCES
@@ -127,30 +127,30 @@ C {vdd.sym} 1890 -1350 0 0 {name=l2 lab=VDD}
 C {gnd.sym} 1890 -1150 0 0 {name=l4 lab=GND}
 C {gnd.sym} 1070 -800 0 0 {name=l5 lab=GND}
 C {lab_wire.sym} 1160 -990 0 0 {name=p3 sig_type=std_logic lab=Vtail}
-C {lab_wire.sym} 1760 -1280 0 0 {name=p5 sig_type=std_logic lab=Vin1}
+C {lab_wire.sym} 1760 -1270 0 0 {name=p5 sig_type=std_logic lab=Vin1}
 C {lab_wire.sym} 1760 -1250 0 0 {name=p6 sig_type=std_logic lab=Vin2}
-C {lab_wire.sym} 1760 -1220 0 0 {name=p7 sig_type=std_logic lab=Vtail}
+C {lab_wire.sym} 1760 -1230 0 0 {name=p7 sig_type=std_logic lab=Vtail}
 C {gnd.sym} 1070 -1140 0 0 {name=l8 lab=GND}
 C {vsource.sym} 1370 -1210 0 0 {name=V3 value=1.65 savecurrent=false}
 C {lab_wire.sym} 1370 -1260 0 0 {name=p2 sig_type=std_logic lab=Vin2}
 C {gnd.sym} 1370 -1140 0 0 {name=l9 lab=GND}
-C {capa.sym} 2090 -1160 0 0 {name=C2
+C {capa.sym} 2090 -1170 0 0 {name=C2
 m=1
 value=1p
 footprint=1206
 device="ceramic capacitor"}
-C {capa.sym} 2170 -1160 0 0 {name=C1
+C {capa.sym} 2170 -1150 0 0 {name=C1
 m=1
 value=1p
 footprint=1206
 device="ceramic capacitor"}
-C {gnd.sym} 2090 -1090 0 0 {name=l10 lab=GND}
-C {gnd.sym} 2170 -1090 0 0 {name=l11 lab=GND}
-C {lab_wire.sym} 2050 -1270 0 0 {name=p9 sig_type=std_logic lab=Vout1}
-C {lab_wire.sym} 2050 -1230 0 0 {name=p10 sig_type=std_logic lab=Vout2}
+C {gnd.sym} 2090 -1100 0 0 {name=l10 lab=GND}
+C {gnd.sym} 2170 -1080 0 0 {name=l11 lab=GND}
+C {lab_wire.sym} 2050 -1260 0 0 {name=p9 sig_type=std_logic lab=Vout1}
+C {lab_wire.sym} 2050 -1240 0 0 {name=p10 sig_type=std_logic lab=Vout2}
 C {symbols/pfet_03v3.sym} 1090 -990 0 1 {name=M1
 L=2u
-W=14u
+W=2u
 nf=1
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"

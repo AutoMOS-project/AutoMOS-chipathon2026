@@ -50,53 +50,76 @@ value="
 * .lib $::180MCU_MODELS/sm141064.ngspice res_statistical
 * ngspice commands
 "}
-C {simulator_commands.sym} 860 -1390 0 0 {name=SIMULATIONS
+C {simulator_commands.sym} 860 -1380 0 0 {name=SIMULATIONS
 simulator=ngspice
 only_toplevel=false 
 value="
 .control
 save all
 
+run
 set color0 = white
 
 *************************************
-** PARAMETERS
+** ECG INPUT PARAMETERS
 *************************************
 
-let Vdd   = 3.3
-let Vcm   = 1.65
-let Voff  = 0
-let Vref  = 0
+let Vdd  = 3.3
+let Vcm  = 1.65
+let Vamp = 0.5m
+let fecg = 100
+
+*************************************
+** BIAS PARAMETERS
+*************************************
+
 let Ibias = 1u
+let Vref  = 1.65
+
+*************************************
+** TRANSIENT PARAMETERS
+*************************************
+
+let tstop = 10m
+let tstep = 1u
 
 *************************************
 ** SOURCES
 *************************************
 
 alter @V1[DC] = $&Vdd
-alter @V2[DC] = $&Vcm + $&Voff
-alter @V3[DC] = $&Vcm + $&Voff
+alter @V2[SIN] = [ $&Vcm $&Vamp $&fecg ]
+alter @V3[SIN] = [ $&Vcm -$&Vamp $&fecg ]
 alter @V4[DC] = $&Vref
 alter @I0[DC] = $&Ibias
 
 *************************************
-** OPERATING POINT SIMULATION
+** TRANSIENT SIMULATION
 *************************************
 
-op
+tran $&tstep $&tstop
 
 *************************************
-** PRINT RESULTS
+** PLOTS
 *************************************
 
-display
-show all
+setplot tran1
+let vin1 = v(Vin1)
+let vin2 = v(Vin2)
+let vout1 = v(Vout1)
+let vout2 = v(Vout2)
+let vin_diff  = vin1-vin2
+let vout_diff = vout1-vout2
+plot vin1 vin2
+plot vin_diff
+plot vout1 vout2
+plot vout_diff
 
 *************************************
 ** SAVE 
 *************************************
 
-write tb_ina_op.raw
+write tb_ina_tran.raw
 
 .endc
 * ngspice commands
@@ -128,10 +151,6 @@ C {gnd.sym} 2390 -1170 0 0 {name=l10 lab=GND}
 C {gnd.sym} 2470 -1170 0 0 {name=l11 lab=GND}
 C {lab_wire.sym} 2190 -1350 0 0 {name=p9 sig_type=std_logic lab=Vout1}
 C {lab_wire.sym} 2190 -1310 0 0 {name=p10 sig_type=std_logic lab=Vout2}
-C {launcher.sym} 1530 -1490 0 0 {name=h1
-descr=Annotate OP
-tclcommand="xschem annotate_op"}
-C {libs/core_ina/ina_ota/ina_ota.sym} 2030 -1330 0 0 {name=x1}
 C {libs/core_ina/ina_cmfb/ina_cmfb.sym} 2030 -1050 0 1 {name=x2}
 C {isource.sym} 1210 -1050 0 0 {name=I0 value=1u}
 C {vdd.sym} 1210 -1120 0 0 {name=l5 lab=VDD}
@@ -144,3 +163,4 @@ C {vdd.sym} 2030 -1150 0 0 {name=l13 lab=VDD}
 C {lab_wire.sym} 2160 -1040 0 1 {name=p7 sig_type=std_logic lab=Vref}
 C {lab_wire.sym} 2160 -1020 0 1 {name=p4 sig_type=std_logic lab=Vb}
 C {lab_wire.sym} 1860 -1150 0 0 {name=p11 sig_type=std_logic lab=Vtail}
+C {libs/core_ina/ina_ota/ina_ota.sym} 2030 -1330 0 0 {name=x1}

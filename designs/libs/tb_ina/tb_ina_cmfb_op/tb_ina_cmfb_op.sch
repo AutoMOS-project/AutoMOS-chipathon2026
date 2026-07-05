@@ -52,8 +52,9 @@ set color0 = white
 
 let Vdd   = 3.3
 let Vcm   = 1.65
-let Voff  = 0
+let Voff  = 0.25
 let Ibias = 1u
+let Vref  = 1.65 
 
 *************************************
 ** SOURCES
@@ -62,7 +63,7 @@ let Ibias = 1u
 alter @V1[DC] = $&Vdd
 alter @V2[DC] = $&Vcm + $&Voff
 alter @V3[DC] = $&Vcm + $&Voff
-alter @V4[DC] = $&Vcm
+alter @V4[DC] = $&Vref
 alter @I0[DC] = $&Ibias
 
 *************************************
