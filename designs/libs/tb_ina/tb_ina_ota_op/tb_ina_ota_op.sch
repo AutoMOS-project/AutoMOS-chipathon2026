@@ -9,26 +9,26 @@ N 1260 -1380 1260 -1340 {lab=GND}
 N 1260 -1280 1260 -1240 {lab=Vin1}
 N 1260 -1180 1260 -1140 {lab=GND}
 N 2080 -1180 2080 -1150 {lab=GND}
-N 1260 -840 1260 -800 {lab=GND}
-N 1910 -1280 1980 -1280 {lab=Vin1}
+N 1260 -820 1260 -780 {lab=GND}
+N 1910 -1270 1980 -1270 {lab=Vin1}
 N 1910 -1250 1980 -1250 {lab=Vin2}
-N 1910 -1220 1980 -1220 {lab=Vtail}
+N 1910 -1230 1980 -1230 {lab=Vtail}
 N 1560 -1280 1560 -1240 {lab=Vin2}
 N 1560 -1180 1560 -1140 {lab=GND}
-N 2180 -1270 2360 -1270 {lab=Vout1}
-N 2360 -1270 2360 -1190 {lab=Vout1}
-N 2180 -1230 2280 -1230 {lab=Vout2}
-N 2280 -1230 2280 -1190 {lab=Vout2}
+N 2180 -1260 2360 -1260 {lab=Vout1}
+N 2360 -1260 2360 -1190 {lab=Vout1}
+N 2180 -1240 2280 -1240 {lab=Vout2}
+N 2280 -1240 2280 -1190 {lab=Vout2}
 N 2280 -1130 2280 -1090 {lab=GND}
 N 2360 -1130 2360 -1090 {lab=GND}
-N 1260 -1060 1260 -1020 {lab=VDD}
-N 1240 -990 1260 -990 {lab=VDD}
-N 1240 -1040 1240 -990 {lab=VDD}
-N 1240 -1040 1260 -1040 {lab=VDD}
-N 1300 -990 1360 -990 {lab=Vtail}
-N 1260 -940 1330 -940 {lab=Vtail}
-N 1330 -990 1330 -940 {lab=Vtail}
-N 1260 -960 1260 -900 {lab=Vtail}
+N 1260 -1040 1260 -1000 {lab=VDD}
+N 1240 -970 1260 -970 {lab=VDD}
+N 1240 -1020 1240 -970 {lab=VDD}
+N 1240 -1020 1260 -1020 {lab=VDD}
+N 1300 -970 1360 -970 {lab=Vtail}
+N 1260 -920 1330 -920 {lab=Vtail}
+N 1330 -970 1330 -920 {lab=Vtail}
+N 1260 -940 1260 -880 {lab=Vtail}
 N 2080 -1350 2080 -1320 {lab=VDD}
 C {simulator_commands.sym} 910 -1520 0 0 {name=MODELS
 simulator=ngspice
@@ -44,7 +44,7 @@ value="
 * .lib $::180MCU_MODELS/sm141064.ngspice res_statistical
 * ngspice commands
 "}
-C {simulator_commands.sym} 910 -1310 0 0 {name=SIMULATIONS
+C {simulator_commands.sym} 910 -1290 0 0 {name=SIMULATIONS
 simulator=ngspice
 only_toplevel=false 
 value="
@@ -59,7 +59,7 @@ set color0 = white
 
 let Vdd   = 3.3
 let Vcm   = 1.65
-let Ibias = 0.5u
+let Ibias = 2u
 
 *************************************
 ** SOURCES
@@ -301,32 +301,32 @@ C {vsource.sym} 1260 -1210 0 0 {name=V2 value=1.65 savecurrent=false}
 C {lab_wire.sym} 1260 -1260 0 0 {name=p1 sig_type=std_logic lab=Vin1}
 C {vdd.sym} 2080 -1350 0 0 {name=l2 lab=VDD}
 C {gnd.sym} 2080 -1150 0 0 {name=l4 lab=GND}
-C {gnd.sym} 1260 -800 0 0 {name=l5 lab=GND}
-C {lab_wire.sym} 1350 -990 0 0 {name=p3 sig_type=std_logic lab=Vtail}
-C {lab_wire.sym} 1950 -1280 0 0 {name=p5 sig_type=std_logic lab=Vin1}
+C {gnd.sym} 1260 -780 0 0 {name=l5 lab=GND}
+C {lab_wire.sym} 1350 -970 0 0 {name=p3 sig_type=std_logic lab=Vtail}
+C {lab_wire.sym} 1950 -1270 0 0 {name=p5 sig_type=std_logic lab=Vin1}
 C {lab_wire.sym} 1950 -1250 0 0 {name=p6 sig_type=std_logic lab=Vin2}
-C {lab_wire.sym} 1950 -1220 0 0 {name=p7 sig_type=std_logic lab=Vtail}
+C {lab_wire.sym} 1950 -1230 0 0 {name=p7 sig_type=std_logic lab=Vtail}
 C {gnd.sym} 1260 -1140 0 0 {name=l8 lab=GND}
 C {vsource.sym} 1560 -1210 0 0 {name=V3 value=1.65 savecurrent=false}
 C {lab_wire.sym} 1560 -1260 0 0 {name=p2 sig_type=std_logic lab=Vin2}
 C {gnd.sym} 1560 -1140 0 0 {name=l9 lab=GND}
 C {capa.sym} 2280 -1160 0 0 {name=C2
 m=1
-value=1p
+value=250f
 footprint=1206
 device="ceramic capacitor"}
 C {capa.sym} 2360 -1160 0 0 {name=C1
 m=1
-value=1p
+value=250f
 footprint=1206
 device="ceramic capacitor"}
 C {gnd.sym} 2280 -1090 0 0 {name=l10 lab=GND}
 C {gnd.sym} 2360 -1090 0 0 {name=l11 lab=GND}
-C {lab_wire.sym} 2240 -1270 0 0 {name=p9 sig_type=std_logic lab=Vout1}
-C {lab_wire.sym} 2240 -1230 0 0 {name=p10 sig_type=std_logic lab=Vout2}
-C {symbols/pfet_03v3.sym} 1280 -990 0 1 {name=M14
+C {lab_wire.sym} 2240 -1260 0 0 {name=p9 sig_type=std_logic lab=Vout1}
+C {lab_wire.sym} 2240 -1240 0 0 {name=p10 sig_type=std_logic lab=Vout2}
+C {symbols/pfet_03v3.sym} 1280 -970 0 1 {name=M14
 L=2u
-W=2u
+W=8u
 nf=1
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
@@ -338,8 +338,8 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 }
-C {isource.sym} 1260 -870 0 0 {name=I0 value=1u}
-C {vdd.sym} 1260 -1060 0 0 {name=l12 lab=VDD}
+C {isource.sym} 1260 -850 0 0 {name=I0 value=1u}
+C {vdd.sym} 1260 -1040 0 0 {name=l12 lab=VDD}
 C {title-2.sym} 0 0 0 0 {name=l1 author="Julio Vilca" rev=1.0 lock=true page=1 pages=7}
 C {launcher.sym} 1590 -1410 0 0 {name=h1
 descr=Annotate OP

@@ -88,26 +88,24 @@ let vout_diff = v(Vout1)-v(Vout2)
 let vin_diff  = v(Vin1)-v(Vin2)
 let Av = vout_diff/vin_diff
 let gain_db = db(Av)
-meas ac A0 FIND gain_db AT=1
-let A0_3dB = A0 - 3
-meas ac BW WHEN gain_db=A0_3dB
+let phase_deg = cph(-1*Av)*180/pi
 meas ac UGF WHEN gain_db=0
-print A0
-print BW
-print UGF
+meas ac phase_UGF FIND phase_deg WHEN gain_db=0
+let PM = phase_UGF + 180
+print PM
 
 *************************************
 ** PLOTS
 *************************************
 
 setplot ac1
-plot gain_db
+plot phase_deg
 
 *************************************
 ** SAVE 
 *************************************
 
-write tb_ina_ota_ac.raw
+write tb_ina_ota_stb.raw
 
 .endc
 * ngspice commands
@@ -130,12 +128,12 @@ C {lab_wire.sym} 1370 -1260 0 0 {name=p2 sig_type=std_logic lab=Vin2}
 C {gnd.sym} 1370 -1140 0 0 {name=l9 lab=GND}
 C {capa.sym} 2090 -1170 0 0 {name=C2
 m=1
-value=500f
+value=1.6p
 footprint=1206
 device="ceramic capacitor"}
 C {capa.sym} 2170 -1150 0 0 {name=C1
 m=1
-value=500f
+value=1.6p
 footprint=1206
 device="ceramic capacitor"}
 C {gnd.sym} 2090 -1100 0 0 {name=l10 lab=GND}

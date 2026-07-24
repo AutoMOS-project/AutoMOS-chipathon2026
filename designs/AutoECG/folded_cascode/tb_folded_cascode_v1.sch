@@ -1,9 +1,8 @@
-v {xschem version=3.4.8RC file_version=1.3}
+v {xschem version=3.4.7 file_version=1.2}
 G {}
 K {}
 V {}
 S {}
-F {}
 E {}
 B 2 3040 -130 3082 -116 {flags=image,unscaled
 alpha=0.8
@@ -59,15 +58,15 @@ N 1460 -480 1460 -440 {lab=VDD1V2}
 N -240 -400 -240 -360 {lab=0}
 N -240 -520 -240 -460 {lab=VDD1V2}
 N 1580 -640 1580 -510 {lab=voutp}
-N 1330 -640 1330 -510 {lab=#net4}
-N 1370 -670 1540 -670 {lab=#net4}
-N 1330 -600 1410 -600 {lab=#net4}
-N 1410 -670 1410 -600 {lab=#net4}
-N 1370 -830 1540 -830 {lab=#net5}
-N 1330 -760 1410 -760 {lab=#net5}
-N 1410 -830 1410 -760 {lab=#net5}
-N 1330 -800 1330 -700 {lab=#net5}
-N 1580 -800 1580 -700 {lab=#net6}
+N 1330 -640 1330 -510 {lab=voutn}
+N 1370 -670 1540 -670 {lab=voutn}
+N 1330 -600 1410 -600 {lab=voutn}
+N 1410 -670 1410 -600 {lab=voutn}
+N 1370 -830 1540 -830 {lab=#net4}
+N 1330 -760 1410 -760 {lab=#net4}
+N 1410 -830 1410 -760 {lab=#net4}
+N 1330 -800 1330 -700 {lab=#net4}
+N 1580 -800 1580 -700 {lab=#net5}
 N 1330 -930 1330 -860 {lab=VDD3V3}
 N 1580 -930 1580 -860 {lab=VDD3V3}
 N 1250 -830 1330 -830 {lab=VDD3V3}
@@ -80,7 +79,7 @@ N 1660 -990 1660 -830 {lab=VDD3V3}
 N 1660 -830 1660 -670 {lab=VDD3V3}
 N 1580 -670 1660 -670 {lab=VDD3V3}
 N 1580 -990 1660 -990 {lab=VDD3V3}
-N 1300 -560 1330 -560 {lab=#net4}
+N 1300 -560 1330 -560 {lab=voutn}
 N 1580 -560 1620 -560 {lab=voutp}
 N 1910 -810 1910 -790 {lab=voutp}
 N 1910 -730 1910 -710 {lab=0}
@@ -370,3 +369,4 @@ value="
 .endc
 "}
 C {lab_pin.sym} 1070 -440 0 1 {name=p14 sig_type=std_logic lab=voutp}
+C {lab_pin.sym} 1300 -560 0 0 {name=p15 sig_type=std_logic lab=voutn}

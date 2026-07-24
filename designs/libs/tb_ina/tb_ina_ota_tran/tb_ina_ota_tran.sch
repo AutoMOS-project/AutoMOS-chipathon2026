@@ -68,13 +68,13 @@ let fecg = 100
 ** BIAS PARAMETERS
 *************************************
 
-let Ibias = 1u
+let Ibias = 2u
 
 *************************************
 ** TRANSIENT PARAMETERS
 *************************************
 
-let tstop = 10m
+let tstop = 20m
 let tstep = 1u
 
 *************************************
