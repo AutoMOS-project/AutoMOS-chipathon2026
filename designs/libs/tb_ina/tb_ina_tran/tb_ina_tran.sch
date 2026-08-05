@@ -58,9 +58,9 @@ set color0 = white
 *************************************
 
 let Vdd  = 3.3
-let Vcm  = 1.65
+let Vcm  = Vdd/2
 let Vamp = 0.5m
-let fecg = 100
+let fecg = 10
 
 *************************************
 ** CHOPPER PARAMETERS
@@ -84,7 +84,7 @@ let Vg 	  = 0.1
 ** TRANSIENT PARAMETERS
 *************************************
 
-let tstop = 300m
+let tstop = 2
 let tstep = 10u
 
 *************************************
@@ -156,13 +156,12 @@ C {gnd.sym} 1210 -1220 0 0 {name=l8 lab=GND}
 C {vsource.sym} 1510 -1290 0 0 {name=V3 value=1.65 savecurrent=false}
 C {lab_wire.sym} 1510 -1340 0 0 {name=p2 sig_type=std_logic lab=Vin2}
 C {gnd.sym} 1510 -1220 0 0 {name=l9 lab=GND}
-C {isource.sym} 1210 -1050 0 0 {name=I0 value=1u}
+C {isource.sym} 1210 -1050 0 0 {name=I0 value=2u}
 C {vdd.sym} 1210 -1120 0 0 {name=l5 lab=VDD}
 C {lab_wire.sym} 1210 -990 0 0 {name=p3 sig_type=std_logic lab=Ib}
 C {vsource.sym} 1510 -1070 0 0 {name=V4 value=1.65 savecurrent=false}
 C {lab_wire.sym} 1510 -1120 0 0 {name=p8 sig_type=std_logic lab=Vref}
 C {gnd.sym} 1510 -1000 0 0 {name=l6 lab=GND}
-C {libs/core_ina/ina/ina.sym} 2110 -1340 0 0 {name=x1}
 C {vdd.sym} 2110 -1460 0 0 {name=l2 lab=VDD}
 C {gnd.sym} 2110 -1220 0 0 {name=l4 lab=GND}
 C {lab_wire.sym} 2320 -1350 0 0 {name=p9 sig_type=std_logic lab=Vout1}
@@ -181,3 +180,8 @@ C {gnd.sym} 1510 -790 0 0 {name=V8 lab=GND}
 C {lab_wire.sym} 1940 -1390 0 0 {name=p15 sig_type=std_logic lab=CLK}
 C {noconn.sym} 2360 -1350 0 1 {name=l10}
 C {noconn.sym} 2360 -1330 0 1 {name=l11}
+C {libs/core_ina/ina/ina.sym} 2110 -1340 0 0 {name=x1}
+C {launcher.sym} 310 -200 0 0 {name=h5
+descr="load waves" 
+tclcommand="xschem raw_read $netlist_dir/tb_ldo_dc1.raw; xschem raw_read $netlist_dir/tb_ldo_dc2.raw; xschem raw_read $netlist_dir/tb_ldo_dc3.raw; xschem raw_read $netlist_dir/tb_ldo_dc4.raw"
+}

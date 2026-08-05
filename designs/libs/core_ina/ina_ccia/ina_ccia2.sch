@@ -60,11 +60,9 @@ N 1750 -1630 1750 -1590 {lab=Vg}
 N 1950 -1750 1950 -1680 {lab=Voutp}
 N 1550 -760 1710 -760 {lab=#net4}
 N 1770 -760 1950 -760 {lab=Voutn}
-N 1890 -1680 1950 -1680 {lab=Voutp}
 N 1950 -1680 2320 -1680 {lab=Voutp}
 N 1950 -690 2320 -690 {lab=Voutn}
 N 1950 -760 1950 -690 {lab=Voutn}
-N 1890 -690 1950 -690 {lab=Voutn}
 N 1550 -690 1610 -690 {lab=#net4}
 N 1120 -1170 1180 -1170 {lab=CLKa}
 N 1120 -1150 1220 -1150 {lab=CLKb}
@@ -82,28 +80,30 @@ N 1550 -1750 1550 -1680 {lab=#net3}
 N 1040 -1680 1550 -1680 {lab=#net3}
 N 1550 -760 1550 -690 {lab=#net4}
 N 1040 -690 1550 -690 {lab=#net4}
+N 1890 -690 1950 -690 {lab=Voutn}
+N 1890 -1680 1950 -1680 {lab=Voutp}
 C {title-2.sym} 0 0 0 0 {name=l1 author="Julio Vilca" rev=1.0 lock=true page=1 pages=1}
 C {libs/core_ina/ina_cmfb/ina_cmfb.sym} 1740 -1020 0 1 {name=x2}
 C {libs/core_ina/ina_chopper/ina_chopper.sym} 1380 -1330 0 0 {name=x3}
 C {libs/core_ina/ina_chopper/ina_chopper.sym} 2180 -1300 0 0 {name=x4}
 C {symbols/cap_mim_2f0fF.sym} 970 -1460 3 0 {name=C1
-W=10e-6
-L=10e-6
+W=50e-6
+L=50e-6
 model=cap_mim_2f0fF
 spiceprefix=X
-m=10}
+m=1}
 C {symbols/cap_mim_2f0fF.sym} 970 -1240 3 1 {name=C2
-W=10e-6
-L=10e-6
+W=50e-6
+L=50e-6
 model=cap_mim_2f0fF
 spiceprefix=X
-m=10}
+m=1}
 C {symbols/cap_mim_2f0fF.sym} 1740 -1750 3 0 {name=C3
 W=10e-6
 L=10e-6
 model=cap_mim_2f0fF
 spiceprefix=X
-m=1}
+m=5}
 C {ipin.sym} 880 -1460 0 0 {name=p9 lab=Vinp}
 C {ipin.sym} 880 -1240 0 0 {name=p10 lab=Vinn}
 C {ipin.sym} 1320 -1420 0 0 {name=p11 lab=VDD}
@@ -115,14 +115,12 @@ W=10e-6
 L=10e-6
 model=cap_mim_2f0fF
 spiceprefix=X
-m=1}
+m=5}
 C {lab_wire.sym} 1750 -600 0 0 {name=p14 sig_type=std_logic lab=Vg}
 C {ipin.sym} 1750 -1590 3 0 {name=p3 lab=Vg}
 C {opin.sym} 2460 -1410 0 0 {name=p17 lab=Voutp}
 C {opin.sym} 2460 -1190 0 0 {name=p18 lab=Voutn}
 C {libs/core_ina/ina_ota/ina_ota.sym} 1740 -1320 0 0 {name=x1}
-C {libs/core_ina/ina_pseudores/ina_pseudores.sym} 1750 -1680 0 0 {name=x6}
-C {libs/core_ina/ina_pseudores/ina_pseudores.sym} 1750 -690 0 0 {name=x7}
 C {ipin.sym} 1120 -1170 0 0 {name=p1 lab=CLKa}
 C {ipin.sym} 1120 -1150 0 0 {name=p2 lab=CLKb}
 C {symbols/cap_mim_2f0fF.sym} 2380 -1300 0 0 {name=C5
@@ -131,3 +129,5 @@ L=10e-6
 model=cap_mim_2f0fF
 spiceprefix=X
 m=5}
+C {libs/core_ina/ina_pseudores/ina_pseudores.sym} 1750 -690 0 0 {name=x6}
+C {libs/core_ina/ina_pseudores/ina_pseudores.sym} 1750 -1680 0 0 {name=x5}

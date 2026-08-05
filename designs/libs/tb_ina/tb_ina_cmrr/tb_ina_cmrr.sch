@@ -43,7 +43,7 @@ value="
 * .lib $::180MCU_MODELS/sm141064.ngspice res_statistical
 * ngspice commands
 "}
-C {simulator_commands.sym} 730 -1250 0 0 {name=SIMULATIONS
+C {simulator_commands.sym} 720 -1260 0 0 {name=SIMULATIONS
 simulator=ngspice
 only_toplevel=false 
 value="
@@ -66,61 +66,71 @@ let Vg  = 0.1
 ** CHOPPER PARAMETERS
 *************************************
 
-let fchop = 10k
+let fchop = 4k
 let tper = 1/fchop
 let ton = tper/2
 let tr = 10n
 let tf = 10n
 
 *************************************
-** SOURCES
+** COMMON SOURCES
 *************************************
 
 alter @V1[DC] = $&Vdd
 alter @V2[DC] = $&Vcm
 alter @V3[DC] = $&Vcm
-alter @V2[ACMAG] = 0.5
-alter @V3[ACMAG] = -0.5
 alter @V4[DC] = $&Vcm
 alter @I0[DC] = $&Ibias
 alter @V5[PULSE] = [ 0 $&Vdd 0 $&tr $&tf $&ton $&tper 0 ]
 alter @V6[DC] = $&Vg
 
 *************************************
-** AC SIMULATION
+** DIFFERENTIAL GAIN
 *************************************
 
-ac dec 100 0.001 1G
+alter @V2[ACMAG] = 0.5
+alter @V3[ACMAG] = -0.5
+
+ac dec 100 0.01 1G
+
+write tb_ina_cmrr.raw
+set appendwrite
+
+*************************************
+** COMMON-MODE GAIN
+*************************************
+
+alter @V2[ACMAG] = 1
+alter @V3[ACMAG] = 1
+
+ac dec 100 0.01 1G
+
+write tb_ina_cmrr.raw
+set appendwrite
 
 *************************************
 ** MEASUREMENTS
 *************************************
 
-let vout_diff = v(Vout1)-v(Vout2)
-let vin_diff  = v(Vin1)-v(Vin2)
-let Av = vout_diff/vin_diff
-let gain_db = db(Av)
-meas ac A0 FIND gain_db AT=10
-let A0_3dB = A0 - 3
-meas ac fL WHEN gain_db=A0_3dB CROSS=1
-meas ac fH WHEN gain_db=A0_3dB CROSS=2
-let BW = fH - fL
-meas ac UGF WHEN gain_db=0
-print A0
-print BW
-print UGF
+setplot new
+setscale ac1.frequency
+let Ad = (ac1.vout1-ac1.vout2)/(ac1.vin1-ac1.vin2)
+let Acm = (ac2.vout1-ac2.vout2)/(ac1.vin1-ac1.vin2)
+let cmrr = Ad/Acm
+let cmrr_db = db(cmrr)
 
 *************************************
 ** PLOTS
 *************************************
 
-plot gain_db
+plot cmrr_db xlog
 
 *************************************
 ** SAVE 
 *************************************
 
-write tb_ina_ac.raw
+write tb_ina_cmrr.raw
+set appendwrite
 
 .endc
 * ngspice commands
@@ -140,6 +150,7 @@ C {lab_wire.sym} 1240 -1040 0 0 {name=p3 sig_type=std_logic lab=Ib}
 C {vsource.sym} 1540 -1120 0 0 {name=V4 value=1.65 savecurrent=false}
 C {lab_wire.sym} 1540 -1170 0 0 {name=p17 sig_type=std_logic lab=Vref}
 C {gnd.sym} 1540 -1050 0 0 {name=l12 lab=GND}
+C {libs/core_ina/ina/ina.sym} 2140 -1390 0 0 {name=x2}
 C {vdd.sym} 2140 -1510 0 0 {name=l19 lab=VDD}
 C {gnd.sym} 2140 -1270 0 0 {name=l20 lab=GND}
 C {lab_wire.sym} 2350 -1400 0 0 {name=p18 sig_type=std_logic lab=Vout1}
@@ -158,4 +169,3 @@ C {gnd.sym} 1540 -840 0 0 {name=V16 lab=GND}
 C {lab_wire.sym} 1970 -1440 0 0 {name=p26 sig_type=std_logic lab=CLK}
 C {noconn.sym} 2390 -1400 0 1 {name=l22}
 C {noconn.sym} 2390 -1380 0 1 {name=l23}
-C {libs/core_ina/ina/ina.sym} 2140 -1390 0 0 {name=x1}

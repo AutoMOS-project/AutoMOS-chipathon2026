@@ -43,7 +43,7 @@ value="
 * .lib $::180MCU_MODELS/sm141064.ngspice res_statistical
 * ngspice commands
 "}
-C {simulator_commands.sym} 730 -1250 0 0 {name=SIMULATIONS
+C {simulator_commands.sym} 720 -1270 0 0 {name=SIMULATIONS
 simulator=ngspice
 only_toplevel=false 
 value="
@@ -152,13 +152,12 @@ C {gnd.sym} 1230 -1280 0 0 {name=l8 lab=GND}
 C {vsource.sym} 1530 -1350 0 0 {name=V3 value=1.65 savecurrent=false}
 C {lab_wire.sym} 1530 -1400 0 0 {name=p2 sig_type=std_logic lab=Vin2}
 C {gnd.sym} 1530 -1280 0 0 {name=l9 lab=GND}
-C {isource.sym} 1230 -1110 0 0 {name=I0 value=1u}
+C {isource.sym} 1230 -1110 0 0 {name=I0 value=2u}
 C {vdd.sym} 1230 -1180 0 0 {name=l5 lab=VDD}
 C {lab_wire.sym} 1230 -1050 0 0 {name=p3 sig_type=std_logic lab=Ib}
 C {vsource.sym} 1530 -1130 0 0 {name=V4 value=1.65 savecurrent=false}
 C {lab_wire.sym} 1530 -1180 0 0 {name=p8 sig_type=std_logic lab=Vref}
 C {gnd.sym} 1530 -1060 0 0 {name=l6 lab=GND}
-C {libs/core_ina/ina/ina.sym} 2130 -1400 0 0 {name=x1}
 C {vdd.sym} 2130 -1520 0 0 {name=l2 lab=VDD}
 C {gnd.sym} 2130 -1280 0 0 {name=l4 lab=GND}
 C {lab_wire.sym} 2340 -1410 0 0 {name=p9 sig_type=std_logic lab=Vout1}
@@ -177,3 +176,4 @@ C {gnd.sym} 1530 -850 0 0 {name=V8 lab=GND}
 C {lab_wire.sym} 1960 -1450 0 0 {name=p15 sig_type=std_logic lab=CLK}
 C {noconn.sym} 2380 -1410 0 1 {name=l10}
 C {noconn.sym} 2380 -1390 0 1 {name=l11}
+C {libs/core_ina/ina/ina.sym} 2130 -1400 0 0 {name=x1}

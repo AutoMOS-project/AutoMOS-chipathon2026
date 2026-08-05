@@ -8,12 +8,7 @@ N 1070 -1480 1070 -1440 {lab=VDD}
 N 1070 -1380 1070 -1340 {lab=GND}
 N 1070 -1280 1070 -1240 {lab=Vin1}
 N 1070 -1180 1070 -1140 {lab=GND}
-N 1890 -1350 1890 -1320 {lab=VDD}
-N 1890 -1180 1890 -1150 {lab=GND}
 N 1070 -840 1070 -800 {lab=GND}
-N 1720 -1270 1790 -1270 {lab=Vin1}
-N 1720 -1250 1790 -1250 {lab=Vin2}
-N 1720 -1230 1790 -1230 {lab=Vtail}
 N 1370 -1280 1370 -1240 {lab=Vin2}
 N 1370 -1180 1370 -1140 {lab=GND}
 N 1070 -1060 1070 -1020 {lab=VDD}
@@ -24,29 +19,34 @@ N 1110 -990 1170 -990 {lab=Vtail}
 N 1070 -940 1140 -940 {lab=Vtail}
 N 1140 -990 1140 -940 {lab=Vtail}
 N 1070 -960 1070 -900 {lab=Vtail}
-N 1990 -1240 2090 -1240 {lab=Vout2}
-N 1990 -1260 2090 -1260 {lab=Vout1}
-N 2190 -1330 2190 -1300 {lab=VDD}
-N 2290 -1240 2350 -1240 {lab=#net1}
-N 2290 -1220 2350 -1220 {lab=#net2}
-N 2190 -1160 2190 -1130 {lab=GND}
-N 1850 -1060 1850 -1030 {lab=VDD}
-N 1970 -980 2010 -980 {lab=#net3}
-N 2010 -1220 2010 -980 {lab=#net3}
-N 2010 -1220 2090 -1220 {lab=#net3}
-N 1970 -960 2030 -960 {lab=#net4}
-N 2030 -1200 2030 -960 {lab=#net4}
-N 2030 -1200 2090 -1200 {lab=#net4}
-N 1850 -910 1850 -880 {lab=GND}
-N 1660 -970 1660 -930 {lab=#net5}
-N 1660 -870 1660 -830 {lab=GND}
-N 1660 -970 1730 -970 {lab=#net5}
-N 2420 -1350 2420 -1270 {lab=#net1}
-N 2420 -1210 2420 -1130 {lab=#net2}
-N 2350 -1350 2350 -1240 {lab=#net1}
-N 2350 -1350 2420 -1350 {lab=#net1}
-N 2350 -1220 2350 -1130 {lab=#net2}
-N 2350 -1130 2420 -1130 {lab=#net2}
+N 1770 -1360 1770 -1330 {lab=VDD}
+N 1770 -1190 1770 -1160 {lab=GND}
+N 1600 -1280 1670 -1280 {lab=Vin1}
+N 1600 -1260 1670 -1260 {lab=Vin2}
+N 1600 -1240 1670 -1240 {lab=Vtail}
+N 1870 -1250 1970 -1250 {lab=Vout2}
+N 1870 -1270 1970 -1270 {lab=Vout1}
+N 2070 -1340 2070 -1310 {lab=VDD}
+N 2170 -1250 2230 -1250 {lab=#net1}
+N 2170 -1230 2230 -1230 {lab=#net2}
+N 2070 -1170 2070 -1140 {lab=GND}
+N 1730 -1070 1730 -1040 {lab=VDD}
+N 1850 -990 1890 -990 {lab=#net3}
+N 1890 -1230 1890 -990 {lab=#net3}
+N 1890 -1230 1970 -1230 {lab=#net3}
+N 1850 -970 1910 -970 {lab=#net4}
+N 1910 -1210 1910 -970 {lab=#net4}
+N 1910 -1210 1970 -1210 {lab=#net4}
+N 1730 -920 1730 -890 {lab=GND}
+N 1540 -980 1540 -940 {lab=#net5}
+N 1540 -880 1540 -840 {lab=GND}
+N 1540 -980 1610 -980 {lab=#net5}
+N 2300 -1360 2300 -1280 {lab=#net1}
+N 2300 -1220 2300 -1140 {lab=#net2}
+N 2230 -1360 2230 -1250 {lab=#net1}
+N 2230 -1360 2300 -1360 {lab=#net1}
+N 2230 -1230 2230 -1140 {lab=#net2}
+N 2230 -1140 2300 -1140 {lab=#net2}
 C {title-2.sym} 0 0 0 0 {name=l1 author="Julio Vilca" rev=1.0 lock=true page=1 pages=7}
 C {simulator_commands.sym} 720 -1520 0 0 {name=MODELS
 simulator=ngspice
@@ -85,44 +85,41 @@ let Ibias = 2u
 *************************************
 
 alter @V1[DC] = $&Vdd
+alter @V1[ACMAG] = 1
 alter @V2[DC] = $&Vcm
 alter @V3[DC] = $&Vcm
-alter @V2[ACMAG] = 0.5
-alter @V3[ACMAG] = -0.5
 alter @I0[DC] = $&Ibias
 
 *************************************
 ** AC SIMULATION
 *************************************
 
-ac dec 100 1 1G
+ac dec 100 0.01 1G
 
 *************************************
 ** MEASUREMENTS
 *************************************
 
-let vout_diff = v(Vout1)-v(Vout2)
-let vin_diff  = v(Vin1)-v(Vin2)
-let Av = vout_diff/vin_diff
-let gain_db = db(Av)
-let phase_deg = cph(-1*Av)*180/pi
-meas ac UGF WHEN gain_db=0
-meas ac phase_UGF FIND phase_deg WHEN gain_db=0
-let PM = phase_UGF + 180
-print PM
+let Aps = v(Vout1)/1
+let psrr_db = -db(Aps)
+meas ac psrr_gain FIND psrr_db AT=10
+let psrr_3db = psrr_gain - 3
+meas ac psrr_bw WHEN psrr_db=$&psrr_3db
+print psrr_gain
+print psrr_bw
 
 *************************************
 ** PLOTS
 *************************************
 
 setplot ac1
-plot phase_deg
+plot psrr_db
 
 *************************************
 ** SAVE 
 *************************************
 
-write tb_ina_ota_stb.raw
+write tb_ina_ota_psrr.raw
 
 .endc
 * ngspice commands
@@ -132,13 +129,8 @@ C {gnd.sym} 1070 -1340 0 0 {name=l3 lab=GND}
 C {vdd.sym} 1070 -1480 0 0 {name=l7 lab=VDD}
 C {vsource.sym} 1070 -1210 0 0 {name=V2 value=1.65 savecurrent=false}
 C {lab_wire.sym} 1070 -1260 0 0 {name=p1 sig_type=std_logic lab=Vin1}
-C {vdd.sym} 1890 -1350 0 0 {name=l2 lab=VDD}
-C {gnd.sym} 1890 -1150 0 0 {name=l4 lab=GND}
 C {gnd.sym} 1070 -800 0 0 {name=l5 lab=GND}
 C {lab_wire.sym} 1160 -990 0 0 {name=p3 sig_type=std_logic lab=Vtail}
-C {lab_wire.sym} 1760 -1270 0 0 {name=p5 sig_type=std_logic lab=Vin1}
-C {lab_wire.sym} 1760 -1250 0 0 {name=p6 sig_type=std_logic lab=Vin2}
-C {lab_wire.sym} 1760 -1230 0 0 {name=p7 sig_type=std_logic lab=Vtail}
 C {gnd.sym} 1070 -1140 0 0 {name=l8 lab=GND}
 C {vsource.sym} 1370 -1210 0 0 {name=V3 value=1.65 savecurrent=false}
 C {lab_wire.sym} 1370 -1260 0 0 {name=p2 sig_type=std_logic lab=Vin2}
@@ -159,18 +151,23 @@ spiceprefix=X
 }
 C {isource.sym} 1070 -870 0 0 {name=I0 value=2u}
 C {vdd.sym} 1070 -1060 0 0 {name=l12 lab=VDD}
-C {libs/core_ina/ina_ota/ina_ota.sym} 1890 -1250 0 0 {name=x1}
-C {lab_wire.sym} 2050 -1260 0 0 {name=p9 sig_type=std_logic lab=Vout1}
-C {lab_wire.sym} 2050 -1240 0 0 {name=p10 sig_type=std_logic lab=Vout2}
-C {libs/core_ina/ina_chopper/ina_chopper.sym} 2190 -1230 0 0 {name=x2}
-C {vdd.sym} 2190 -1330 0 0 {name=l11 lab=VDD}
-C {gnd.sym} 2190 -1130 0 0 {name=l13 lab=GND}
-C {libs/core_ina/ina_clockgen/ina_clockgen.sym} 1850 -970 0 0 {name=x3}
-C {vdd.sym} 1850 -1060 0 0 {name=l14 lab=VDD}
-C {gnd.sym} 1850 -880 0 0 {name=l15 lab=GND}
-C {vsource.sym} 1660 -900 0 0 {name=V4 value=3.3 savecurrent=false}
-C {gnd.sym} 1660 -830 0 0 {name=l16 lab=GND}
-C {symbols/cap_mim_2f0fF.sym} 2420 -1240 0 0 {name=C5
+C {vdd.sym} 1770 -1360 0 0 {name=l2 lab=VDD}
+C {gnd.sym} 1770 -1160 0 0 {name=l4 lab=GND}
+C {lab_wire.sym} 1640 -1280 0 0 {name=p5 sig_type=std_logic lab=Vin1}
+C {lab_wire.sym} 1640 -1260 0 0 {name=p6 sig_type=std_logic lab=Vin2}
+C {lab_wire.sym} 1640 -1240 0 0 {name=p7 sig_type=std_logic lab=Vtail}
+C {libs/core_ina/ina_ota/ina_ota.sym} 1770 -1260 0 0 {name=x1}
+C {lab_wire.sym} 1930 -1270 0 0 {name=p9 sig_type=std_logic lab=Vout1}
+C {lab_wire.sym} 1930 -1250 0 0 {name=p10 sig_type=std_logic lab=Vout2}
+C {libs/core_ina/ina_chopper/ina_chopper.sym} 2070 -1240 0 0 {name=x2}
+C {vdd.sym} 2070 -1340 0 0 {name=l11 lab=VDD}
+C {gnd.sym} 2070 -1140 0 0 {name=l13 lab=GND}
+C {libs/core_ina/ina_clockgen/ina_clockgen.sym} 1730 -980 0 0 {name=x3}
+C {vdd.sym} 1730 -1070 0 0 {name=l14 lab=VDD}
+C {gnd.sym} 1730 -890 0 0 {name=l15 lab=GND}
+C {vsource.sym} 1540 -910 0 0 {name=V4 value=0 savecurrent=false}
+C {gnd.sym} 1540 -840 0 0 {name=l16 lab=GND}
+C {symbols/cap_mim_2f0fF.sym} 2300 -1250 0 0 {name=C5
 W=10e-6
 L=10e-6
 model=cap_mim_2f0fF

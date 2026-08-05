@@ -43,7 +43,7 @@ value="
 * .lib $::180MCU_MODELS/sm141064.ngspice res_statistical
 * ngspice commands
 "}
-C {simulator_commands.sym} 860 -1390 0 0 {name=SIMULATIONS
+C {simulator_commands.sym} 870 -1390 0 0 {name=SIMULATIONS
 simulator=ngspice
 only_toplevel=false 
 value="
@@ -57,7 +57,7 @@ set color0 = white
 *************************************
 
 let Vdd   = 3.3
-let Vcm   = 1.65
+let Vcm   = Vdd/2
 let Vg    = 0.1
 let Ibias = 2u
 
@@ -90,11 +90,20 @@ alter @V6[DC] = $&Vg
 op
 
 *************************************
+** MEASUREMENTS
+*************************************
+
+let Idd = -i(V1)
+let Pdis = $&Vdd*Idd
+
+*************************************
 ** PRINT RESULTS
 *************************************
 
 display
 show all
+print Idd
+print Pdis
 
 *************************************
 ** SAVE 

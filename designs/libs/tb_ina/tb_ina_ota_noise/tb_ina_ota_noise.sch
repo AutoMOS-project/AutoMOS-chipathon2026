@@ -16,7 +16,6 @@ N 1720 -1250 1790 -1250 {lab=Vin2}
 N 1720 -1230 1790 -1230 {lab=Vtail}
 N 1370 -1280 1370 -1240 {lab=Vin2}
 N 1370 -1180 1370 -1140 {lab=GND}
-N 1990 -1260 2170 -1260 {lab=Vout1}
 N 1990 -1240 2090 -1240 {lab=Vout2}
 N 1070 -1060 1070 -1020 {lab=VDD}
 N 1050 -990 1070 -990 {lab=VDD}
@@ -26,10 +25,7 @@ N 1110 -990 1170 -990 {lab=Vtail}
 N 1070 -940 1140 -940 {lab=Vtail}
 N 1140 -990 1140 -940 {lab=Vtail}
 N 1070 -960 1070 -900 {lab=Vtail}
-N 2170 -1260 2170 -1190 {lab=Vout1}
-N 2090 -1240 2090 -1190 {lab=Vout2}
-N 2090 -1130 2090 -1090 {lab=GND}
-N 2170 -1130 2170 -1090 {lab=GND}
+N 1990 -1260 2090 -1260 {lab=Vout1}
 C {title-2.sym} 0 0 0 0 {name=l1 author="Julio Vilca" rev=1.0 lock=true page=1 pages=7}
 C {simulator_commands.sym} 720 -1520 0 0 {name=MODELS
 simulator=ngspice
@@ -163,18 +159,8 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 }
-C {isource.sym} 1070 -870 0 0 {name=I0 value=1u}
+C {isource.sym} 1070 -870 0 0 {name=I0 value=2u}
 C {vdd.sym} 1070 -1060 0 0 {name=l12 lab=VDD}
 C {libs/core_ina/ina_ota/ina_ota.sym} 1890 -1250 0 0 {name=x1}
-C {capa.sym} 2090 -1160 0 0 {name=C2
-m=1
-value=6f
-footprint=1206
-device="ceramic capacitor"}
-C {capa.sym} 2170 -1160 0 0 {name=C1
-m=1
-value=6f
-footprint=1206
-device="ceramic capacitor"}
-C {gnd.sym} 2090 -1090 0 0 {name=l10 lab=GND}
-C {gnd.sym} 2170 -1090 0 0 {name=l11 lab=GND}
+C {noconn.sym} 2090 -1260 0 1 {name=l10}
+C {noconn.sym} 2090 -1240 0 1 {name=l6}
