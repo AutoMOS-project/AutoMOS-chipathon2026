@@ -1,0 +1,175 @@
+# ----- ------ ----- ----- ------ ----- ----- ------ -----
+# Chipathon 2026: Project configuration
+# LICENSE: Apache License Version 2.0
+# http://www.apache.org/licenses/
+# ----- ------ ----- ----- ------ ----- ----- ------ -----
+
+# data will be pulled from main branch of the repo.
+# please be sure that the main branch contains the data you want to submit.
+# This file will be updated with more information later
+
+# ======================================================
+# Project metadata (used for documentation / review)
+# ======================================================
+project:
+  title: "AutoECG"
+  team: "AutoMOS"
+  discord: "rodrigom1199"
+  description: "Wearable-grade analog front-end (AFE) for continuous ECG monitoring"
+  lvs_config: "lvs_config.json"
+
+# ======================================================
+# Technology & Physical Specifications
+# ======================================================
+technology: "gf180mcudD"
+estimated_chip_size: "400 um x 400 um (0.16 mm2)"
+
+# ======================================================
+# Documentation & External Links
+# ======================================================
+links:
+  repository: "https://github.com/AutoMOS-project/AutoMOS-chipathon2026"
+  proposal_presentation: "https://docs.google.com/presentation/d/16v9apwHpB_tdQXrnOgL_mvZzQGu0yqZgKsLePHHeGgA/edit?usp=sharing"
+  proposal_document: "https://github.com/AutoMOS-project/AutoMOS-chipathon2026/blob/main/project-proposal"
+  progress_tracker: "https://github.com/AutoMOS-project/AutoMOS-chipathon2026/blob/main/progress-tracker.md"
+  schematic_review: "https://drive.google.com/open?id=1yArg9eURDTD4U1TzQWk_HXc--uBOyANuxjhyyxrrQCk"
+
+# ======================================================
+# Team Members
+# ======================================================
+team:
+  - name: "Rodrigo Marin"
+    role: "Project Lead / Analog IC Design and Layout"
+    github: "rodrigomrodrigom99"
+    discord: "rodrigom1199"
+    email: "rodrigom1199@gmail.com"
+
+  - name: "Luighi Viton"
+    role: "Analog IC Design and Layout"
+    github: "luighiv"
+    discord: "luighiv"
+    email: "LuighiAVZ@gmail.com"
+
+  - name: "Julio Vilca"
+    role: "Analog IC Design and Layout"
+    github: "jvilcap"
+    discord: ""
+    email: "julio.vilca@pucp.edu.pe"
+
+  - name: "Manuel Monge"
+    role: "Analog IC Design and Layout / System-level Verification"
+    github: "manuel-monge"
+    discord: "manuelmonge85"
+    email: "ma.monge.85@gmail.com"
+
+# ======================================================
+# Pinout Configuration (18-pin Layout)
+# ======================================================
+pinout:
+  - pin: 1
+    name: "VDD"
+    type: "Power"
+    direction: "Input"
+    description: "3.3V Power Supply"
+
+  - pin: 2
+    name: "EINP"
+    type: "Analog"
+    direction: "Input"
+    description: "Positive Electrodes Input"
+
+  - pin: 3
+    name: "EINN"
+    type: "Analog"
+    direction: "Input"
+    description: "Negative Electrodes Input"
+
+  - pin: 4
+    name: "GND"
+    type: "Power"
+    direction: "Input"
+    description: "Ground Reference (0V)"
+
+  - pin: 5
+    name: "VOUTP"
+    type: "Analog"
+    direction: "Output"
+    description: "Positive Analog Output"
+
+  - pin: 6
+    name: "VOUTN"
+    type: "Analog"
+    direction: "Output"
+    description: "Negative Analog Output"
+
+  - pin: 7
+    name: "B0"
+    type: "Digital"
+    direction: "Input"
+    description: "PGA Gain Bit 0 (x1)"
+
+  - pin: 8
+    name: "B1"
+    type: "Digital"
+    direction: "Input"
+    description: "PGA Gain Bit 1 (x2)"
+
+  - pin: 9
+    name: "B2"
+    type: "Digital"
+    direction: "Input"
+    description: "PGA Gain Bit 2 (x4)"
+
+  - pin: 10
+    name: "B3"
+    type: "Digital"
+    direction: "Input"
+    description: "PGA Gain Bit 3 (x8)"
+
+  - pin: 11
+    name: "B4"
+    type: "Digital"
+    direction: "Input"
+    description: "PGA Gain Bit 4 (x16)"
+
+  - pin: 12
+    name: "CLK_PGA"
+    type: "Digital"
+    direction: "Input"
+    description: "Clock Signal for PGA"
+
+  - pin: 13
+    name: "VBCN"
+    type: "Analog"
+    direction: "Input/Output"
+    description: "Cascode Bias Voltage (N-type)"
+
+  - pin: 14
+    name: "VBCP"
+    type: "Analog"
+    direction: "Input/Output"
+    description: "Cascode Bias Voltage (P-type)"
+
+  - pin: 15
+    name: "VCM"
+    type: "Analog"
+    direction: "Input/Output"
+    description: "Common-Mode Voltage"
+
+  - pin: 16
+    name: "IBIAS_1U"
+    type: "Analog"
+    direction: "Input/Output"
+    description: "1uA Bias Current Reference"
+
+  - pin: 17
+    name: "DRLOUT"
+    type: "Analog"
+    direction: "Output"
+    description: "Driven Right Leg Output"
+
+  - pin: 18
+    name: "CLK_INA"
+    type: "Digital"
+    direction: "Input"
+    description: "Clock Signal for INA"
