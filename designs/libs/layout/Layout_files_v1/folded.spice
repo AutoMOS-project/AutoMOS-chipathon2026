@@ -1,0 +1,15 @@
+** sch_path: /foss/designs/core_pga/folded_cascode/folded.sch
+.subckt folded outp outn gf180mcu_gnd VDD3V3 inp inn Vb1V3 Vb0V94 Vcm Vbfb Vbsnk Vbtail
+*.PININFO outp:O outn:O gf180mcu_gnd:B VDD3V3:B inp:I inn:I Vb1V3:B Vb0V94:B Vcm:B Vbfb:B Vbsnk:B Vbtail:B
+M1 net3 inp net1 VDD3V3 pfet_03v3 L=1u W=10u nf=1
+M2 net2 inn net1 VDD3V3 pfet_03v3 L=1u W=10u nf=1
+M6 outn Vb0V94 net3 gf180mcu_gnd nfet_03v3 L=1u W=4u nf=4
+M7 outp Vb0V94 net2 gf180mcu_gnd nfet_03v3 L=1u W=4u nf=4
+M8 outn Vb1V3 net4 VDD3V3 pfet_03v3 L=1u W=4u nf=4
+M9 outp Vb1V3 net5 VDD3V3 pfet_03v3 L=1u W=4u nf=4
+M3 net1 Vbtail VDD3V3 VDD3V3 pfet_03v3 L=1u W=32u nf=1
+M4 net3 Vbsnk gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=1u W=9u nf=4
+M5 net2 Vbsnk gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=1u W=9u nf=4
+M10 net4 Vbfb VDD3V3 VDD3V3 pfet_03v3 L=1u W=4u nf=4
+M11 net5 Vbfb VDD3V3 VDD3V3 pfet_03v3 L=1u W=4u nf=4
+.ends

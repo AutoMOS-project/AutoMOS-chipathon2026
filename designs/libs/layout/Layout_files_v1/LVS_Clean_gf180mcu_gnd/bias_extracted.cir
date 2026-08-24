@@ -1,0 +1,16 @@
+* Extracted by KLayout with GF180MCU LVS runset on : 19/08/2026 07:14
+
+.SUBCKT bias VDD3V3 Vbtail Ib gf180mcu_gnd 1ua Vbsnk
+M$1 Vbsnk Vbtail VDD3V3 VDD3V3 pfet_03v3 L=1U W=11U AS=6.6P AD=6.6P PS=23.2U
++ PD=23.2U
+M$2 Vbtail Vbtail VDD3V3 VDD3V3 pfet_03v3 L=1U W=6U AS=3.6P AD=3.6P PS=13.2U
++ PD=13.2U
+M$3 Ib Vbtail VDD3V3 VDD3V3 pfet_03v3 L=1U W=4.9U AS=2.94P AD=2.94P PS=11U
++ PD=11U
+M$4 Vbsnk Vbsnk gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=1U W=4U AS=2.4P AD=2.4P
++ PS=9.2U PD=9.2U
+M$5 Vbtail 1ua gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=1U W=3U AS=1.8P AD=1.8P
++ PS=7.2U PD=7.2U
+M$6 1ua 1ua gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=1U W=1U AS=0.6P AD=0.6P
++ PS=3.2U PD=3.2U
+.ENDS bias

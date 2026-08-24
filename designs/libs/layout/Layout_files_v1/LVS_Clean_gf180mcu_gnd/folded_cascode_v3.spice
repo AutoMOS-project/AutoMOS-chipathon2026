@@ -1,0 +1,31 @@
+** sch_path: /foss/designs/core_pga/folded_cascode/folded_cascode_v3.sch
+.subckt folded_cascode_v3 outp outn gf180mcu_gnd VDD3V3 inp inn 1ua Vb1V3 Vb0V94 Vcm
+*.PININFO outp:O outn:O gf180mcu_gnd:B VDD3V3:B inp:I inn:I 1ua:B Vb1V3:B Vb0V94:B Vcm:B
+M1 net3 inp net1 VDD3V3 pfet_03v3 L=1u W=10u nf=1
+M2 net2 inn net1 VDD3V3 pfet_03v3 L=1u W=10u nf=1
+M6 outn Vb0V94 net3 gf180mcu_gnd nfet_03v3 L=1u W=4u nf=4
+M7 outp Vb0V94 net2 gf180mcu_gnd nfet_03v3 L=1u W=4u nf=4
+M8 outn Vb1V3 net4 VDD3V3 pfet_03v3 L=1u W=4u nf=4
+M9 outp Vb1V3 net5 VDD3V3 pfet_03v3 L=1u W=4u nf=4
+M3 net1 Vbtail VDD3V3 VDD3V3 pfet_03v3 L=1u W=32u nf=1
+M4 net3 Vbsnk gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=1u W=9u nf=4
+M5 net2 Vbsnk gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=1u W=9u nf=4
+M10 net4 Vbfb VDD3V3 VDD3V3 pfet_03v3 L=1u W=4u nf=4
+M11 net5 Vbfb VDD3V3 VDD3V3 pfet_03v3 L=1u W=4u nf=4
+M20 net8 net8 VDD3V3 VDD3V3 pfet_03v3 L=1u W=3u nf=1
+M21 net8 outp net6 gf180mcu_gnd nfet_03v3 L=1u W=10u nf=1
+M22 Vbfb Vcm net6 gf180mcu_gnd nfet_03v3 L=1u W=10u nf=1
+M23 net6 Ib gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=1u W=8u nf=1
+M24 Vbfb Vcm net7 gf180mcu_gnd nfet_03v3 L=1u W=10u nf=1
+M25 net9 outn net7 gf180mcu_gnd nfet_03v3 L=1u W=10u nf=1
+M26 net7 Ib gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=1u W=8u nf=1
+M27 Ib Ib gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=1u W=8u nf=1
+M12 1ua 1ua gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=1u W=1u nf=1
+M13 Vbtail 1ua gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=1u W=3u nf=1
+M14 Vbtail Vbtail VDD3V3 VDD3V3 pfet_03v3 L=1u W=6u nf=1
+M15 Vbsnk Vbsnk gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=1u W=4u nf=1
+M16 Vbsnk Vbtail VDD3V3 VDD3V3 pfet_03v3 L=1u W=11u nf=1
+M17 net9 net9 VDD3V3 VDD3V3 pfet_03v3 L=1u W=3u nf=1
+M18 Vbfb Vbfb VDD3V3 VDD3V3 pfet_03v3 L=1u W=3u nf=1
+M28 Ib Vbtail VDD3V3 VDD3V3 pfet_03v3 L=1u W=4.9u nf=1
+.ends

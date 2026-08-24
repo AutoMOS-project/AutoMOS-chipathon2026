@@ -1,0 +1,10 @@
+** sch_path: /foss/designs/core_pga/folded_cascode/bias.sch
+.subckt bias gf180mcu_gnd VDD3V3 1ua Vbtail Vbsnk Ib
+*.PININFO gf180mcu_gnd:B VDD3V3:B 1ua:B Vbtail:B Vbsnk:B Ib:B
+M12 1ua 1ua gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=1u W=1u nf=1
+M13 Vbtail 1ua gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=1u W=3u nf=1
+M14 Vbtail Vbtail VDD3V3 VDD3V3 pfet_03v3 L=1u W=6u nf=1
+M15 Vbsnk Vbsnk gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=1u W=4u nf=1
+M16 Vbsnk Vbtail VDD3V3 VDD3V3 pfet_03v3 L=1u W=11u nf=1
+M28 Ib Vbtail VDD3V3 VDD3V3 pfet_03v3 L=1u W=4.9u nf=1
+.ends

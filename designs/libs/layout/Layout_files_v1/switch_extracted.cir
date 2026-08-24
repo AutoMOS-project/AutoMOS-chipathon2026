@@ -1,0 +1,11 @@
+* Extracted by KLayout with GF180MCU LVS runset on : 21/08/2026 06:30
+
+.SUBCKT switch gf180mcu_gnd VDD3V clk clkb in out
+M$1 gf180mcu_gnd gf180mcu_gnd gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=0.36U
++ W=2.6U AS=1.508P AD=1.508P PS=7.52U PD=7.52U
+M$2 out clk in gf180mcu_gnd nfet_03v3 L=0.36U W=1.3U AS=0.78P AD=0.78P PS=3.8U
++ PD=3.8U
+M$4 VDD3V VDD3V VDD3V VDD3V pfet_03v3 L=0.36U W=9U AS=5.22P AD=5.22P PS=20.32U
++ PD=20.32U
+M$5 out clkb in VDD3V pfet_03v3 L=0.36U W=4.5U AS=2.7P AD=2.7P PS=10.2U PD=10.2U
+.ENDS switch

@@ -1,0 +1,12 @@
+* Extracted by KLayout with GF180MCU LVS runset on : 17/08/2026 06:55
+
+.SUBCKT inverter gf180mcu_gnd VDD3V3 in out
+M$1 out in VDD3V3 VDD3V3 pfet_03v3 L=0.36U W=12U AS=5.28P AD=5.28P PS=19.76U
++ PD=19.76U
+M$3 out in gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=0.36U W=6U AS=2.64P AD=2.64P
++ PS=10.76U PD=10.76U
+M$5 gf180mcu_gnd gf180mcu_gnd gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=0.36U W=6U
++ AS=3.48P AD=3.48P PS=14.32U PD=14.32U
+M$7 VDD3V3 VDD3V3 VDD3V3 VDD3V3 pfet_03v3 L=0.36U W=12U AS=6.96P AD=6.96P
++ PS=26.32U PD=26.32U
+.ENDS inverter

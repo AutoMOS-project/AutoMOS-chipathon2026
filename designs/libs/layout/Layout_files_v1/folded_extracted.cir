@@ -1,0 +1,21 @@
+* Extracted by KLayout with GF180MCU LVS runset on : 23/08/2026 02:00
+
+.SUBCKT folded gf180mcu_gnd Vbsnk Vb0V94 outn outp VDD3V3 Vb1V3 inn inp Vbtail
++ Vbfb
+M$1 VDD3V3 Vbfb \$18 VDD3V3 pfet_03v3 L=1U W=4U AS=2.4P AD=2.4P PS=9.2U PD=9.2U
+M$2 \$17 Vb1V3 outn VDD3V3 pfet_03v3 L=1U W=4U AS=2.4P AD=2.4P PS=9.2U PD=9.2U
+M$3 \$17 Vbfb VDD3V3 VDD3V3 pfet_03v3 L=1U W=4U AS=2.4P AD=2.4P PS=9.2U PD=9.2U
+M$4 \$26 Vbtail VDD3V3 VDD3V3 pfet_03v3 L=1U W=32U AS=19.2P AD=19.2P PS=65.2U
++ PD=65.2U
+M$5 outp Vb1V3 \$18 VDD3V3 pfet_03v3 L=1U W=4U AS=2.4P AD=2.4P PS=9.2U PD=9.2U
+M$6 \$5 inn \$26 VDD3V3 pfet_03v3 L=1U W=10U AS=6P AD=6P PS=21.2U PD=21.2U
+M$7 \$4 inp \$26 VDD3V3 pfet_03v3 L=1U W=10U AS=6P AD=6P PS=21.2U PD=21.2U
+M$8 outp Vb0V94 \$5 gf180mcu_gnd nfet_03v3 L=1U W=4U AS=2.4P AD=2.4P PS=9.2U
++ PD=9.2U
+M$9 \$4 Vb0V94 outn gf180mcu_gnd nfet_03v3 L=1U W=4U AS=2.4P AD=2.4P PS=9.2U
++ PD=9.2U
+M$10 gf180mcu_gnd Vbsnk \$5 gf180mcu_gnd nfet_03v3 L=1U W=9U AS=5.4P AD=5.4P
++ PS=19.2U PD=19.2U
+M$11 \$4 Vbsnk gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=1U W=9U AS=5.4P AD=5.4P
++ PS=19.2U PD=19.2U
+.ENDS folded

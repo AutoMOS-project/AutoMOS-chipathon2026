@@ -1,0 +1,8 @@
+** sch_path: /foss/designs/core_pga/inverter/inverter.sch
+.subckt inverter VDD3V3 gf180mcu_gnd in out
+*.PININFO gf180mcu_gnd:B VDD3V3:B in:B out:B
+M1 out in VDD3V3 VDD3V3 pfet_03v3 L=0.36u W=6u nf=1 m=2
+M2 out in gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=0.36u W=3u nf=1 m=2
+M3 gf180mcu_gnd gf180mcu_gnd gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=0.36u W=3u nf=1 m=2
+M4 VDD3V3 VDD3V3 VDD3V3 VDD3V3 pfet_03v3 L=0.36u W=6u nf=1 m=2
+.ends

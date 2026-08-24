@@ -1,0 +1,31 @@
+** sch_path: /foss/designs/layout/capfb_m8.sch
+.subckt capfb_m8 VSS VDD3V3 clk in out
+*.PININFO VSS:B VDD3V3:B clk:I in:B out:B
+x4 VDD3V3 VSS in net1 clk clkb switch
+x19 VDD3V3 VSS clk clkb inverter
+C3 out net1 cap_mim_2f0fF c_width=11e-6 c_length=11e-6 m=8
+.ends
+
+* expanding   symbol:  /foss/designs/core_pga/switch/switch.sym # of pins=6
+** sym_path: /foss/designs/core_pga/switch/switch.sym
+** sch_path: /foss/designs/core_pga/switch/switch.sch
+.subckt switch VDD3V3 VSS in out clk clkb
+*.PININFO VSS:B VDD3V3:B clk:I clkb:I in:B out:B
+M5 in clkb out VDD3V3 pfet_03v3 L=0.36u W=4.5u nf=1
+M7 out clk in VSS nfet_03v3 L=0.36u W=1.3u nf=1
+M1 VDD3V3 VDD3V3 VDD3V3 VDD3V3 pfet_03v3 L=0.36u W=4.5u nf=1 m=2
+M2 VSS VSS VSS VSS nfet_03v3 L=0.36u W=1.3u nf=1 m=2
+.ends
+
+
+* expanding   symbol:  /foss/designs/core_pga/inverter/inverter.sym # of pins=4
+** sym_path: /foss/designs/core_pga/inverter/inverter.sym
+** sch_path: /foss/designs/core_pga/inverter/inverter.sch
+.subckt inverter VDD3V3 VSS in out
+*.PININFO VSS:B VDD3V3:B in:B out:B
+M1 out in VDD3V3 VDD3V3 pfet_03v3 L=0.36u W=6u nf=1 m=2
+M2 out in VSS VSS nfet_03v3 L=0.36u W=3u nf=1 m=2
+M3 VSS VSS VSS VSS nfet_03v3 L=0.36u W=3u nf=1 m=2
+M4 VDD3V3 VDD3V3 VDD3V3 VDD3V3 pfet_03v3 L=0.36u W=6u nf=1 m=2
+.ends
+

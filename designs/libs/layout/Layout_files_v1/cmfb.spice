@@ -1,0 +1,14 @@
+** sch_path: /foss/designs/core_pga/folded_cascode/cmfb.sch
+.subckt cmfb vp vn gf180mcu_gnd VDD3V3 Ib Vcm Vbfb
+*.PININFO gf180mcu_gnd:B VDD3V3:B Ib:B Vcm:B Vbfb:B vp:B vn:B
+M20 net3 net3 VDD3V3 VDD3V3 pfet_03v3 L=1u W=3u nf=1
+M21 net3 vp net1 gf180mcu_gnd nfet_03v3 L=1u W=10u nf=1
+M22 Vbfb Vcm net1 gf180mcu_gnd nfet_03v3 L=1u W=10u nf=1
+M23 net1 Ib gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=1u W=8u nf=1
+M24 Vbfb Vcm net2 gf180mcu_gnd nfet_03v3 L=1u W=10u nf=1
+M25 net4 vn net2 gf180mcu_gnd nfet_03v3 L=1u W=10u nf=1
+M26 net2 Ib gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=1u W=8u nf=1
+M27 Ib Ib gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=1u W=8u nf=1
+M17 net4 net4 VDD3V3 VDD3V3 pfet_03v3 L=1u W=3u nf=1
+M18 Vbfb Vbfb VDD3V3 VDD3V3 pfet_03v3 L=1u W=3u nf=1
+.ends

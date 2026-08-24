@@ -1,0 +1,9 @@
+** sch_path: /foss/designs/core_pga/buffer/buffer.sch
+.subckt buffer VDD3V3 gf180mcu_gnd in out Vb_i1u
+*.PININFO out:O gf180mcu_gnd:B VDD3V3:B in:I Vb_i1u:B
+M42 net1 net1 VDD3V3 VDD3V3 pfet_03v3 L=1u W=1u nf=1 m=6
+M44 net1 in net2 gf180mcu_gnd nfet_03v3 L=1u W=1u nf=1 m=6
+M46 net2 Vb_i1u gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=1u W=1u nf=1 m=10
+M1 out net1 VDD3V3 VDD3V3 pfet_03v3 L=1u W=1u nf=1 m=6
+M2 out out net2 gf180mcu_gnd nfet_03v3 L=1u W=1u nf=1 m=6
+.ends

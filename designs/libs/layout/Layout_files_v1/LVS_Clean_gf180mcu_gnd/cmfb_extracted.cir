@@ -1,0 +1,19 @@
+* Extracted by KLayout with GF180MCU LVS runset on : 18/08/2026 06:24
+
+.SUBCKT cmfb gf180mcu_gnd Ib vp vn Vcm Vbfb VDD3V3
+M$1 \$14 \$14 VDD3V3 VDD3V3 pfet_03v3 L=1U W=3U AS=1.8P AD=1.8P PS=7.2U PD=7.2U
+M$2 Vbfb Vbfb VDD3V3 VDD3V3 pfet_03v3 L=1U W=3U AS=1.8P AD=1.8P PS=7.2U PD=7.2U
+M$3 \$12 \$12 VDD3V3 VDD3V3 pfet_03v3 L=1U W=3U AS=1.8P AD=1.8P PS=7.2U PD=7.2U
+M$4 \$14 vn \$11 gf180mcu_gnd nfet_03v3 L=1U W=10U AS=6P AD=6P PS=21.2U PD=21.2U
+M$5 \$12 vp \$10 gf180mcu_gnd nfet_03v3 L=1U W=10U AS=6P AD=6P PS=21.2U PD=21.2U
+M$6 Vbfb Vcm \$11 gf180mcu_gnd nfet_03v3 L=1U W=10U AS=6P AD=6P PS=21.2U
++ PD=21.2U
+M$7 \$10 Ib gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=1U W=8U AS=4.8P AD=4.8P
++ PS=17.2U PD=17.2U
+M$8 Ib Ib gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=1U W=8U AS=4.8P AD=4.8P
++ PS=17.2U PD=17.2U
+M$9 \$11 Ib gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=1U W=8U AS=4.8P AD=4.8P
++ PS=17.2U PD=17.2U
+M$10 Vbfb Vcm \$10 gf180mcu_gnd nfet_03v3 L=1U W=10U AS=6P AD=6P PS=21.2U
++ PD=21.2U
+.ENDS cmfb

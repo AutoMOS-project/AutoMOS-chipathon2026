@@ -1,0 +1,10 @@
+* Extracted by KLayout with GF180MCU LVS runset on : 21/08/2026 06:23
+
+.SUBCKT buffer gf180mcu_gnd Vb_i1u in out VDD3V3
+M$1 \$8 \$8 VDD3V3 VDD3V3 pfet_03v3 L=1U W=6U AS=2P AD=2P PS=11U PD=11U
+M$7 out \$8 VDD3V3 VDD3V3 pfet_03v3 L=1U W=6U AS=2P AD=2P PS=11U PD=11U
+M$13 out out \$4 gf180mcu_gnd nfet_03v3 L=1U W=6U AS=2P AD=2P PS=11U PD=11U
+M$19 \$8 in \$4 gf180mcu_gnd nfet_03v3 L=1U W=6U AS=2P AD=2P PS=11U PD=11U
+M$25 \$4 Vb_i1u gf180mcu_gnd gf180mcu_gnd nfet_03v3 L=1U W=10U AS=3.12P
++ AD=3.12P PS=17.24U PD=17.24U
+.ENDS buffer
