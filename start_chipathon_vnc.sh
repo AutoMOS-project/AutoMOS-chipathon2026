@@ -1,8 +1,8 @@
-#!/bin/bash -e
+#!/bin/bash
 # ========================================================================
-# Start script for DIC docker images (VNC)
+# Start script for ICD@JKU docker images (VNC)
 #
-# SPDX-FileCopyrightText: 2022-2025 Harald Pretl and Georg Zachl
+# SPDX-FileCopyrightText: 2022-2026 Harald Pretl and Georg Zachl
 # Johannes Kepler University, Department for Integrated Circuits 
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,27 +17,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # SPDX-License-Identifier: Apache-2.0
-#
-# This file is based on start_vnc.sh from:
-# https://github.com/iic-jku/IIC-OSIC-TOOLS
-#
-# Modifications by Jianxun Zhu:
-# - Added: export DESIGNS="$(pwd)/designs" at the beginning to set designs
-#   directory to current directory's designs folder
-# Modifications by Luighi Viton-Zorrilla:
-# - Added: support for an .env file to load environment variables
-# - Added: support for gLatout installation by GLAYOUT_INSTALL
-# GLAYOUT_REPOSITORY and GLAYOUT_FOLDER env variables
-# - Added: -e flag to bash to stop on error
 # ========================================================================
-
-# Set the DESIGNS environment variable to the 'designs' subdirectory of the current directory
-export DESIGNS="$(pwd)/designs"
-ENVFILE=".env"
-
-if [ -f "${ENVFILE}" ]; then
-	source "${ENVFILE}"
-fi
 
 if [ -n "${DRY_RUN}" ]; then
 	echo "[INFO] This is a dry run, all commands will be printed to the shell (Commands printed but not executed are marked with $)!"
@@ -75,7 +55,7 @@ if [ -z ${DOCKER_IMAGE+z} ]; then
 fi
 
 if [ -z ${DOCKER_TAG+z} ]; then
-	DOCKER_TAG="chipathon"
+	DOCKER_TAG="chipathon26"
 fi
 
 if [ -z ${CONTAINER_NAME+z} ]; then
@@ -119,29 +99,16 @@ if [[ ${CONTAINER_GROUP} -ne 0 ]]  && [[ ${CONTAINER_GROUP} -lt 1000 ]]; then
         echo
 fi
 
-# Adding support for gLayout installation
-if [[ ${GLAYOUT_INSTALL} == 1 ]]; then
-
-	if [ -z ${GLAYOUT_REPOSITORY+z} ]; then
-		GLAYOUT_REPOSITORY="git@github.com:ReaLLMASIC/gLayout.git"
-	fi
-
-	if [ -z ${GLAYOUT_FOLDER+z} ]; then
-		GLAYOUT_REPOSITORY="gLayout"
-	fi
-
-	if [ -z ${GLAYOUT_PATH+z} ]; then
-		GLAYOUT_PATH="libs"
-	fi
-  
-fi
-
 # Processing ports and other parameters
-PARAMS=""
+# Fixed potential errors in the container due to reduced access to syscalls.
+if [ -n "${IIC_SERVER_DEPLOYMENT}" ]; then
+	PARAMS=""
+else
+	PARAMS="--security-opt seccomp=unconfined"
+fi
 if [ "$WEBSERVER_PORT" -gt 0 ]; then
 	PARAMS="$PARAMS -p $WEBSERVER_PORT:80"
 fi
-
 if [ "$VNC_PORT" -gt 0 ]; then
 	PARAMS="$PARAMS -p $VNC_PORT:5901"
 fi
@@ -156,23 +123,6 @@ fi
 
 if [ -n "${IIC_OSIC_TOOLS_QUIET}" ]; then
 	DOCKER_EXTRA_PARAMS="${DOCKER_EXTRA_PARAMS} -e IIC_OSIC_TOOLS_QUIET=1"
-fi
-
-
-if [[ ${GLAYOUT_INSTALL} == 1 ]]; then
-
-	if [ -n ${GLAYOUT_REPOSITORY} ]; then
-		DOCKER_EXTRA_PARAMS="${DOCKER_EXTRA_PARAMS} -e GLAYOUT_REPOSITORY=${GLAYOUT_REPOSITORY}"
-	fi
-
-	if [ -n ${GLAYOUT_FOLDER} ]; then
-		DOCKER_EXTRA_PARAMS="${DOCKER_EXTRA_PARAMS} -e GLAYOUT_FOLDER=${GLAYOUT_FOLDER}"
-	fi
-
-	if [ -n ${GLAYOUT_PATH} ]; then
-		DOCKER_EXTRA_PARAMS="${DOCKER_EXTRA_PARAMS} -e GLAYOUT_PATH=${GLAYOUT_PATH}"
-	fi
-  
 fi
 
 if [ -n "${DOCKER_EXTRA_PARAMS}" ]; then
@@ -212,21 +162,6 @@ else
 	#${ECHO_IF_DRY_RUN} docker pull "${DOCKER_USER}/${DOCKER_IMAGE}:${DOCKER_TAG}"
 	# Disable SC2086, $PARAMS must be globbed and splitted.
 	# shellcheck disable=SC2086
-	${ECHO_IF_DRY_RUN} docker run -d --user "${CONTAINER_USER}:${CONTAINER_GROUP}" $PARAMS -v "$DESIGNS:/foss/designs:rw" --name "${CONTAINER_NAME}" "${DOCKER_USER}/${DOCKER_IMAGE}:${DOCKER_TAG}" > /dev/null
-fi
-
-if [[ ${GLAYOUT_INSTALL} == 1 ]]; then
-	
-	# extra steps for gLayout
-	if [ -d "${DESIGNS}/${GLAYOUT_PATH}/${GLAYOUT_FOLDER}" ]; then
-		echo "[INFO] gLayout folder exists in repo. Skipping."
-	else
-		echo "[INFO] adding gLayout as submodule"
-		cd ${DESIGNS}/${GLAYOUT_PATH}
-		git submodule add ${GLAYOUT_REPOSITORY} ${GLAYOUT_FOLDER}
-		git submodule update --init --recursive
-
-		echo "[INFO] Selected repository ${GLAYOUT_REPOSITORY} added and initialized successfully. Please to install it, execute run_GL.sh inside the docker container."
-	fi
-
+	${ECHO_IF_DRY_RUN} docker run -d --user "${CONTAINER_USER}:${CONTAINER_GROUP}" $PARAMS -v "$DESIGNS":"/foss/designs":rw --name "${CONTAINER_NAME}" "${DOCKER_USER}/${DOCKER_IMAGE}:${DOCKER_TAG}" > /dev/null
+	[ -z "${IIC_OSIC_TOOLS_QUIET}" ] && [ "$WEBSERVER_PORT" -gt 0 ] && echo "[INFO] To access the VNC session, open a browser and navigate to http://localhost:${WEBSERVER_PORT}/?password=${VNC_PW:-abc123}"
 fi

@@ -1,0 +1,35 @@
+** sch_path: /foss/designs/libs/core_ina/ina_clockgen/ina_clockgen.sch
+.subckt ina_clockgen VDD CLKIN CLKA CLKB VSS
+*.PININFO CLKIN:I VDD:I VSS:I CLKA:O CLKB:O
+x1 VDD net4 CLKIN net1 VSS ina_nand
+x2 VDD net6 net3 net2 VSS ina_nand
+x3 VDD CLKIN net2 VSS ina_inv
+x4 VDD net4 net5 VSS ina_inv
+x5 VDD net5 net3 VSS ina_inv
+x6 VDD net3 CLKA VSS ina_inv
+x7 VDD net6 net7 VSS ina_inv
+x8 VDD net7 net1 VSS ina_inv
+x9 VDD net1 CLKB VSS ina_inv
+.ends
+
+* expanding   symbol:  libs/core_ina/ina_nand/ina_nand.sym # of pins=5
+** sym_path: /foss/designs/libs/core_ina/ina_nand/ina_nand.sym
+** sch_path: /foss/designs/libs/core_ina/ina_nand/ina_nand.sch
+.subckt ina_nand VDD Vout Vin1 Vin2 VSS
+*.PININFO VDD:I Vin1:I Vin2:I VSS:I Vout:O
+MN1 Vout Vin1 VDD VDD pfet_03v3 L=0.28u W=2u nf=1 m=1
+MN2 Vout Vin2 VDD VDD pfet_03v3 L=0.28u W=2u nf=1 m=1
+MN3 Vout Vin1 net1 VSS nfet_03v3 L=0.28u W=2u nf=1 m=1
+MN4 net1 Vin2 VSS VSS nfet_03v3 L=0.28u W=2u nf=1 m=1
+.ends
+
+
+* expanding   symbol:  libs/core_ina/ina_inv/ina_inv.sym # of pins=4
+** sym_path: /foss/designs/libs/core_ina/ina_inv/ina_inv.sym
+** sch_path: /foss/designs/libs/core_ina/ina_inv/ina_inv.sch
+.subckt ina_inv VDD Vin Vout VSS
+*.PININFO VDD:I VSS:I Vin:I Vout:O
+MI1 Vout Vin VDD VDD pfet_03v3 L=0.28u W=2u nf=1 m=1
+MI2 Vout Vin VSS VSS nfet_03v3 L=0.28u W=1u nf=1 m=1
+.ends
+

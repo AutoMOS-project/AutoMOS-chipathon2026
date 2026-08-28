@@ -12,7 +12,7 @@ N 1410 -950 1410 -910 {lab=VSS}
 N 1410 -1190 1410 -1150 {lab=VDD}
 N 1060 -1020 1300 -1020 {lab=#net2}
 N 1060 -1190 1060 -1020 {lab=#net2}
-N 1060 -1600 1060 -1410 {lab=CLKin}
+N 1060 -1600 1060 -1410 {lab=CLKIN}
 N 1240 -1080 1300 -1080 {lab=#net3}
 N 1240 -1540 1240 -1400 {lab=#net1}
 N 1240 -1220 1240 -1080 {lab=#net3}
@@ -33,14 +33,14 @@ N 1740 -1510 1740 -1470 {lab=VSS}
 N 2020 -1510 2020 -1470 {lab=VSS}
 N 1740 -990 1740 -910 {lab=VSS}
 N 2020 -990 2020 -910 {lab=VSS}
-N 980 -1600 1300 -1600 {lab=CLKin}
+N 980 -1600 1300 -1600 {lab=CLKIN}
 N 1330 -1710 2360 -1710 {lab=VDD}
 N 1330 -910 2360 -910 {lab=VSS}
 N 2480 -1570 2560 -1570 {lab=CLKa}
 N 2360 -1710 2360 -1630 {lab=VDD}
 N 2200 -1570 2200 -1440 {lab=#net3}
 N 1240 -1220 2200 -1440 {lab=#net3}
-N 2480 -1050 2560 -1050 {lab=CLKb}
+N 2480 -1050 2560 -1050 {lab=CLKB}
 N 2360 -990 2360 -910 {lab=VSS}
 N 2200 -1180 2200 -1050 {lab=#net1}
 N 1240 -1400 2200 -1180 {lab=#net1}
@@ -64,8 +64,8 @@ C {lab_wire.sym} 2020 -1150 0 1 {name=p9 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 1740 -1150 0 1 {name=p10 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 1740 -1470 0 1 {name=p14 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} 2020 -1470 0 1 {name=p15 sig_type=std_logic lab=VSS}
-C {ipin.sym} 980 -1600 0 0 {name=p19 lab=CLKin}
+C {ipin.sym} 980 -1600 0 0 {name=p19 lab=CLKIN}
 C {ipin.sym} 1330 -1710 0 0 {name=p7 lab=VDD}
 C {ipin.sym} 1330 -910 0 0 {name=p11 lab=VSS}
-C {opin.sym} 2560 -1570 0 0 {name=p17 lab=CLKa}
-C {opin.sym} 2560 -1050 0 0 {name=p3 lab=CLKb}
+C {opin.sym} 2560 -1570 0 0 {name=p17 lab=CLKA}
+C {opin.sym} 2560 -1050 0 0 {name=p3 lab=CLKB}

@@ -1,0 +1,20 @@
+** sch_path: /foss/designs/libs/core_ina/ina_chopper/ina_chopper.sch
+.subckt ina_chopper VOUT2 VIN1 VDD VSS CLKB CLKA VOUT1 VIN2
+*.PININFO VIN1:I VIN2:I CLKB:I VOUT2:O CLKA:I VOUT1:O VDD:I VSS:I
+MT2 VOUT1 CLKA VIN1 VSS nfet_03v3 L=0.28u W=2u nf=1
+MT1 VOUT1 CLKB VIN1 VDD pfet_03v3 L=0.28u W=4u nf=1
+MT4 VOUT2 CLKB VIN1 VSS nfet_03v3 L=0.28u W=2u nf=1
+MT3 VOUT2 CLKA VIN1 VDD pfet_03v3 L=0.28u W=4u nf=1
+MT6 VOUT2 CLKA VIN2 VSS nfet_03v3 L=0.28u W=2u nf=1
+MT5 VOUT2 CLKB VIN2 VDD pfet_03v3 L=0.28u W=4u nf=1
+MT8 VOUT1 CLKB VIN2 VSS nfet_03v3 L=0.28u W=2u nf=1
+MT7 VOUT1 CLKA VIN2 VDD pfet_03v3 L=0.28u W=4u nf=1
+MT2_dummy VOUT1 CLKB VOUT1 VSS nfet_03v3 L=0.28u W=1u nf=1
+MT1_dummy VOUT1 CLKA VOUT1 VDD pfet_03v3 L=0.28u W=2u nf=1
+MT4_dummy VOUT2 CLKA VOUT2 VSS nfet_03v3 L=0.28u W=1u nf=1
+MT3_dummy VOUT2 CLKB VOUT2 VDD pfet_03v3 L=0.28u W=2u nf=1
+MT5_dummy VOUT2 CLKA VOUT2 VDD pfet_03v3 L=0.28u W=2u nf=1
+MT6_dummy VOUT2 CLKB VOUT2 VSS nfet_03v3 L=0.28u W=1u nf=1
+MT7_dummy VOUT1 CLKB VOUT1 VDD pfet_03v3 L=0.28u W=2u nf=1
+MT8_dummy VOUT1 CLKA VOUT1 VSS nfet_03v3 L=0.28u W=1u nf=1
+.ends

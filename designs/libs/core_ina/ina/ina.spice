@@ -1,0 +1,180 @@
+** sch_path: /foss/designs/libs/core_ina/ina/ina.sch
+.subckt ina VG VDD VINP VINN CLK VOUTP VOUTN VSS VCM IB
+*.PININFO CLK:I VINP:I VINN:I VDD:I VSS:I VCM:I IB:I VG:I VOUTP:O VOUTN:O
+x3 VDD CLK net1 net2 VSS ina_clockgen
+MB1 IB IB VSS VSS nfet_03v3 L=2u W=3.2u nf=1
+Mnbias_dummy_L VSS VSS VSS VSS nfet_03v3 L=2u W=3.2u nf=1
+Mnbias_dummy_R VSS VSS VSS VSS nfet_03v3 L=2u W=3.2u nf=1
+x1 VG VINP VDD net3 VINN net4 net1 net2 VCM IB VSS ina_ccia1
+x2 VG net3 VDD VOUTP net4 VOUTN net1 net2 VCM IB VSS ina_ccia2
+.ends
+
+* expanding   symbol:  libs/core_ina/ina_clockgen/ina_clockgen.sym # of pins=5
+** sym_path: /foss/designs/libs/core_ina/ina_clockgen/ina_clockgen.sym
+** sch_path: /foss/designs/libs/core_ina/ina_clockgen/ina_clockgen.sch
+.subckt ina_clockgen VDD CLKIN CLKA CLKB VSS
+*.PININFO CLKIN:I VDD:I VSS:I CLKA:O CLKB:O
+x1 VDD net4 CLKIN net1 VSS ina_nand
+x2 VDD net6 net3 net2 VSS ina_nand
+x3 VDD CLKIN net2 VSS ina_inv
+x4 VDD net4 net5 VSS ina_inv
+x5 VDD net5 net3 VSS ina_inv
+x6 VDD net3 CLKA VSS ina_inv
+x7 VDD net6 net7 VSS ina_inv
+x8 VDD net7 net1 VSS ina_inv
+x9 VDD net1 CLKB VSS ina_inv
+.ends
+
+
+* expanding   symbol:  libs/core_ina/ina_ccia/ina_ccia1/ina_ccia1.sym # of pins=11
+** sym_path: /foss/designs/libs/core_ina/ina_ccia/ina_ccia1/ina_ccia1.sym
+** sch_path: /foss/designs/libs/core_ina/ina_ccia/ina_ccia1/ina_ccia1.sch
+.subckt ina_ccia1 VG VINP VDD VOUTP VINN VOUTN CLKA CLKB VCM VB VSS
+*.PININFO VINP:I VINN:I VDD:I VSS:I VCM:I VB:I VG:I VOUTP:O VOUTN:O CLKA:I CLKB:I
+x2 VDD net5 net7 net6 VCM VB VSS ina_cmfb
+x3 net2 net3 VDD VSS CLKB CLKA net1 net4 ina_chopper
+x4 VOUTN net6 VDD VSS CLKB CLKA VOUTP net7 ina_chopper
+XCIN1 VINP net3 cap_mim_2f0fF c_width=20e-6 c_length=20e-6 m=5
+XCIN2 VINN net4 cap_mim_2f0fF c_width=20e-6 c_length=20e-6 m=5
+XCFB1 net3 VOUTP cap_mim_2f0fF c_width=10e-6 c_length=10e-6
+XCFB2 net4 VOUTN cap_mim_2f0fF c_width=10e-6 c_length=10e-6
+x1 VDD net5 net1 net7 net6 net2 VSS ina_ota
+XCOUT VOUTP VOUTN cap_mim_2f0fF c_width=10e-6 c_length=10e-6 m=5
+x5 net3 VOUTP VG ina_pseudores
+x6 net4 VOUTN VG ina_pseudores
+.ends
+
+
+* expanding   symbol:  libs/core_ina/ina_ccia/ina_ccia2/ina_ccia2.sym # of pins=11
+** sym_path: /foss/designs/libs/core_ina/ina_ccia/ina_ccia2/ina_ccia2.sym
+** sch_path: /foss/designs/libs/core_ina/ina_ccia/ina_ccia2/ina_ccia2.sch
+.subckt ina_ccia2 VG VINP VDD VOUTP VINN VOUTN CLKA CLKB VCM VB VSS
+*.PININFO VINP:I VINN:I VDD:I VSS:I VCM:I VB:I VG:I VOUTP:O VOUTN:O CLKA:I CLKB:I
+x2 VDD net5 net7 net6 VCM VB VSS ina_cmfb
+x3 net2 net3 VDD VSS CLKB CLKA net1 net4 ina_chopper
+x4 VOUTN net6 VDD VSS CLKB CLKA VOUTP net7 ina_chopper
+XCIN3 VINP net3 cap_mim_2f0fF c_width=10e-6 c_length=10e-6 m=5
+XCIN4 VINN net4 cap_mim_2f0fF c_width=10e-6 c_length=10e-6 m=5
+XCFB1 net3 VOUTP cap_mim_2f0fF c_width=10e-6 c_length=10e-6
+XCFB2 net4 VOUTN cap_mim_2f0fF c_width=10e-6 c_length=10e-6
+x1 VDD net5 net1 net7 net6 net2 VSS ina_ota
+XCOUT VOUTP VOUTN cap_mim_2f0fF c_width=10e-6 c_length=10e-6 m=5
+x6 net4 VOUTN VG ina_pseudores
+x5 net3 VOUTP VG ina_pseudores
+.ends
+
+
+* expanding   symbol:  libs/core_ina/ina_nand/ina_nand.sym # of pins=5
+** sym_path: /foss/designs/libs/core_ina/ina_nand/ina_nand.sym
+** sch_path: /foss/designs/libs/core_ina/ina_nand/ina_nand.sch
+.subckt ina_nand VDD Vout Vin1 Vin2 VSS
+*.PININFO VDD:I Vin1:I Vin2:I VSS:I Vout:O
+MN1 Vout Vin1 VDD VDD pfet_03v3 L=0.28u W=2u nf=1
+MN2 Vout Vin2 VDD VDD pfet_03v3 L=0.28u W=2u nf=1
+MN3 Vout Vin1 net1 VSS nfet_03v3 L=0.28u W=2u nf=1
+MN4 net1 Vin2 VSS VSS nfet_03v3 L=0.28u W=2u nf=1
+.ends
+
+
+* expanding   symbol:  libs/core_ina/ina_inv/ina_inv.sym # of pins=4
+** sym_path: /foss/designs/libs/core_ina/ina_inv/ina_inv.sym
+** sch_path: /foss/designs/libs/core_ina/ina_inv/ina_inv.sch
+.subckt ina_inv VDD Vin Vout VSS
+*.PININFO VDD:I VSS:I Vin:I Vout:O
+MI1 Vout Vin VDD VDD pfet_03v3 L=0.28u W=2u nf=1
+MI2 Vout Vin VSS VSS nfet_03v3 L=0.28u W=1u nf=1
+.ends
+
+
+* expanding   symbol:  libs/core_ina/ina_cmfb/ina_cmfb.sym # of pins=7
+** sym_path: /foss/designs/libs/core_ina/ina_cmfb/ina_cmfb.sym
+** sch_path: /foss/designs/libs/core_ina/ina_cmfb/ina_cmfb.sch
+.subckt ina_cmfb VDD VCMFB VIN2 VIN1 VCM VB VSS
+*.PININFO VIN1:I VIN2:I VCMFB:O VCM:I VSS:I VB:I VDD:I
+MC1 VCMFB VCMFB VDD VDD pfet_03v3 L=2u W=8u nf=1
+MC3 VCMFB VIN1 net1 VSS nfet_03v3 L=2u W=1.6u nf=1
+MC4 net3 VCM net1 VSS nfet_03v3 L=2u W=1.6u nf=1
+MC7 net1 VB VSS VSS nfet_03v3 L=2u W=3.2u nf=1
+MC5 net3 VCM net2 VSS nfet_03v3 L=2u W=1.6u nf=1
+MC6 VCMFB VIN2 net2 VSS nfet_03v3 L=2u W=1.6u nf=1
+MC8 net2 VB VSS VSS nfet_03v3 L=2u W=3.2u nf=1
+MC2 net3 net3 VDD VDD pfet_03v3 L=2u W=8u nf=1
+Mndiff_dummy_L[1] VSS VSS VSS VSS nfet_03v3 L=2u W=1.6u nf=1
+Mndiff_dummy_L[0] VSS VSS VSS VSS nfet_03v3 L=2u W=1.6u nf=1
+Mndiff_dummy_R[1] VSS VSS VSS VSS nfet_03v3 L=2u W=1.6u nf=1
+Mndiff_dummy_R[0] VSS VSS VSS VSS nfet_03v3 L=2u W=1.6u nf=1
+Mpcmfb_dummy_L VDD VDD VDD VDD pfet_03v3 L=2u W=8u nf=1
+Mpcfmb_dummy_R VDD VDD VDD VDD pfet_03v3 L=2u W=8u nf=1
+Mntail_dummy_L VSS VSS VSS VSS nfet_03v3 L=2u W=3.2u nf=1
+Mntail_dummy_R VSS VSS VSS VSS nfet_03v3 L=2u W=3.2u nf=1
+.ends
+
+
+* expanding   symbol:  libs/core_ina/ina_chopper/ina_chopper.sym # of pins=8
+** sym_path: /foss/designs/libs/core_ina/ina_chopper/ina_chopper.sym
+** sch_path: /foss/designs/libs/core_ina/ina_chopper/ina_chopper.sch
+.subckt ina_chopper VOUT2 VIN1 VDD VSS CLKB CLKA VOUT1 VIN2
+*.PININFO VIN1:I VIN2:I CLKB:I VOUT2:O CLKA:I VOUT1:O VDD:I VSS:I
+MT2 VOUT1 CLKA VIN1 VSS nfet_03v3 L=0.28u W=2u nf=1
+MT1 VOUT1 CLKB VIN1 VDD pfet_03v3 L=0.28u W=4u nf=1
+MT4 VOUT2 CLKB VIN1 VSS nfet_03v3 L=0.28u W=2u nf=1
+MT3 VOUT2 CLKA VIN1 VDD pfet_03v3 L=0.28u W=4u nf=1
+MT6 VOUT2 CLKA VIN2 VSS nfet_03v3 L=0.28u W=2u nf=1
+MT5 VOUT2 CLKB VIN2 VDD pfet_03v3 L=0.28u W=4u nf=1
+MT8 VOUT1 CLKB VIN2 VSS nfet_03v3 L=0.28u W=2u nf=1
+MT7 VOUT1 CLKA VIN2 VDD pfet_03v3 L=0.28u W=4u nf=1
+MT2_dummy VOUT1 CLKB VOUT1 VSS nfet_03v3 L=0.28u W=1u nf=1
+MT1_dummy VOUT1 CLKA VOUT1 VDD pfet_03v3 L=0.28u W=2u nf=1
+MT4_dummy VOUT2 CLKA VOUT2 VSS nfet_03v3 L=0.28u W=1u nf=1
+MT3_dummy VOUT2 CLKB VOUT2 VDD pfet_03v3 L=0.28u W=2u nf=1
+MT5_dummy VOUT2 CLKA VOUT2 VDD pfet_03v3 L=0.28u W=2u nf=1
+MT6_dummy VOUT2 CLKB VOUT2 VSS nfet_03v3 L=0.28u W=1u nf=1
+MT7_dummy VOUT1 CLKB VOUT1 VDD pfet_03v3 L=0.28u W=2u nf=1
+MT8_dummy VOUT1 CLKA VOUT1 VSS nfet_03v3 L=0.28u W=1u nf=1
+.ends
+
+
+* expanding   symbol:  libs/core_ina/ina_ota/ina_ota.sym # of pins=7
+** sym_path: /foss/designs/libs/core_ina/ina_ota/ina_ota.sym
+** sch_path: /foss/designs/libs/core_ina/ina_ota/ina_ota.sch
+.subckt ina_ota VDD VTAIL VIN1 VOUT2 VOUT1 VIN2 VSS
+*.PININFO VIN1:I VIN2:I VTAIL:I VSS:I VOUT1:O VDD:I VOUT2:O
+M4 net4 net4 VDD VDD pfet_03v3 L=6u W=0.65u nf=1
+M1 net3 VTAIL VDD VDD pfet_03v3 L=2u W=8u nf=1
+M7 net5 net5 VDD VDD pfet_03v3 L=6u W=0.65u nf=1
+M2 net1 VIN1 net3 VDD pfet_03v3 L=0.28u W=15u nf=1 m=10
+M3 net2 VIN2 net3 VDD pfet_03v3 L=0.28u W=15u nf=1 m=10
+M10 net4 net1 VSS VSS nfet_03v3 L=6u W=1.8u nf=1
+M11 net5 net2 VSS VSS nfet_03v3 L=6u W=1.8u nf=1
+M8 net1 net1 VSS VSS nfet_03v3 L=6u W=1.8u nf=1
+M9 net2 net2 VSS VSS nfet_03v3 L=6u W=1.8u nf=1
+M5 VOUT1 net4 VDD VDD pfet_03v3 L=6u W=0.65u nf=1
+M13 VOUT1 net2 VSS VSS nfet_03v3 L=6u W=1.8u nf=1
+M12 VOUT2 net1 VSS VSS nfet_03v3 L=6u W=1.8u nf=1
+M6 VOUT2 net5 VDD VDD pfet_03v3 L=6u W=0.65u nf=1
+Mpota_dummy_L[1] VDD VDD VDD VDD pfet_03v3 L=6u W=0.65u nf=1
+Mpota_dummy_L[0] VDD VDD VDD VDD pfet_03v3 L=6u W=0.65u nf=1
+Mpdiff_dummy_L VDD VDD VDD VDD pfet_03v3 L=0.28u W=15u nf=1
+Mpota_dummy_R[1] VDD VDD VDD VDD pfet_03v3 L=6u W=0.65u nf=1
+Mpota_dummy_R[0] VDD VDD VDD VDD pfet_03v3 L=6u W=0.65u nf=1
+Mpdiff_dummy_R VDD VDD VDD VDD pfet_03v3 L=0.28u W=15u nf=1
+Mnota_dummy_L[1] VSS VSS VSS VSS nfet_03v3 L=6u W=1.8u nf=1
+Mnota_dummy_L[0] VSS VSS VSS VSS nfet_03v3 L=6u W=1.8u nf=1
+Mnota_dummy_R[1] VSS VSS VSS VSS nfet_03v3 L=6u W=1.8u nf=1
+Mnota_dummy_R[0] VSS VSS VSS VSS nfet_03v3 L=6u W=1.8u nf=1
+Mptail_dummy_L VDD VDD VDD VDD pfet_03v3 L=2u W=8u nf=1
+Mptail_dummy_R VDD VDD VDD VDD pfet_03v3 L=2u W=8u nf=1
+.ends
+
+
+* expanding   symbol:  libs/core_ina/ina_pseudores/ina_pseudores.sym # of pins=3
+** sym_path: /foss/designs/libs/core_ina/ina_pseudores/ina_pseudores.sym
+** sch_path: /foss/designs/libs/core_ina/ina_pseudores/ina_pseudores.sch
+.subckt ina_pseudores VA VB VG
+*.PININFO VG:I VA:B VB:B
+MR1 VA VG VG VG nfet_03v3 L=5u W=0.5u nf=1
+MR2 net2 VG VG VG nfet_03v3 L=5u W=0.5u nf=1
+MR3 net2 net1 net1 net1 nfet_03v3 L=12u W=0.5u nf=1
+MR4 VB net1 net1 net1 nfet_03v3 L=12u W=0.5u nf=1
+.ends
+

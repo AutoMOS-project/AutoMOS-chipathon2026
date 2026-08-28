@@ -1,0 +1,8 @@
+** sch_path: /foss/designs/libs/core_ina/ina_pseudores/ina_pseudores.sch
+.subckt ina_pseudores VA VB VG
+*.PININFO VG:I VA:B VB:B
+MR1 VA VG VG VG nfet_03v3 L=5u W=0.5u nf=1 m=1
+MR2 net2 VG VG VG nfet_03v3 L=5u W=0.5u nf=1 m=1
+MR3 net2 net1 net1 net1 nfet_03v3 L=12u W=0.5u nf=1 m=1
+MR4 VB net1 net1 net1 nfet_03v3 L=12u W=0.5u nf=1 m=1
+.ends

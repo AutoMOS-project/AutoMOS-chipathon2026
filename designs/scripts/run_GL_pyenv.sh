@@ -8,6 +8,8 @@ unset LD_LIBRARY_PATH
 # Define base directory for conda installation
 BASE_DIR="$HOME/glayout-env"
 ENV_NAME="GLdev"
+GLAYOUT_PATH=""
+GLAYOUT_FOLDER="gLayout"
 
 #export PATH="$MINICONDA_DIR/bin:$PATH"
 

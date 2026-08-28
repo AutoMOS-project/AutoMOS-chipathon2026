@@ -1,0 +1,20 @@
+** sch_path: /foss/designs/libs/core_ina/ina_cmfb/ina_cmfb.sch
+.subckt ina_cmfb VDD VCMFB VIN2 VIN1 VCM VB VSS
+*.PININFO VIN1:I VIN2:I VCMFB:O VCM:I VSS:I VB:I VDD:I
+MC1 VCMFB VCMFB VDD VDD pfet_03v3 L=2u W=8u nf=1 m=1
+MC3 VCMFB VIN1 net1 VSS nfet_03v3 L=2u W=1.6u nf=1 m=1
+MC4 net3 VCM net1 VSS nfet_03v3 L=2u W=1.6u nf=1 m=1
+MC7 net1 VB VSS VSS nfet_03v3 L=2u W=3.2u nf=1 m=1
+MC5 net3 VCM net2 VSS nfet_03v3 L=2u W=1.6u nf=1 m=1
+MC6 VCMFB VIN2 net2 VSS nfet_03v3 L=2u W=1.6u nf=1 m=1
+MC8 net2 VB VSS VSS nfet_03v3 L=2u W=3.2u nf=1 m=1
+MC2 net3 net3 VDD VDD pfet_03v3 L=2u W=8u nf=1 m=1
+Mndiff_dummy_L[1] VSS VSS VSS VSS nfet_03v3 L=2u W=1.6u nf=1 m=1
+Mndiff_dummy_L[0] VSS VSS VSS VSS nfet_03v3 L=2u W=1.6u nf=1 m=1
+Mndiff_dummy_R[1] VSS VSS VSS VSS nfet_03v3 L=2u W=1.6u nf=1 m=1
+Mndiff_dummy_R[0] VSS VSS VSS VSS nfet_03v3 L=2u W=1.6u nf=1 m=1
+Mpcmfb_dummy_L VDD VDD VDD VDD pfet_03v3 L=2u W=8u nf=1 m=1
+Mpcfmb_dummy_R VDD VDD VDD VDD pfet_03v3 L=2u W=8u nf=1 m=1
+Mntail_dummy_L VSS VSS VSS VSS nfet_03v3 L=2u W=3.2u nf=1 m=1
+Mntail_dummy_R VSS VSS VSS VSS nfet_03v3 L=2u W=3.2u nf=1 m=1
+.ends

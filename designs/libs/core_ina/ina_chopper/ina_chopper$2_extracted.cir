@@ -1,0 +1,20 @@
+* Extracted by KLayout with GF180MCU LVS runset on : 28/08/2026 06:19
+
+.SUBCKT ina_chopper$2
+M$1 \$4 \$3 \$9 \$6 pfet_03v3 L=0.28U W=4U AS=3P AD=3P PS=9.5U PD=9.5U
+M$2 \$4 \$3 \$4 \$6 pfet_03v3 L=0.28U W=2U AS=1.5P AD=1.5P PS=5.5U PD=5.5U
+M$3 \$5 \$3 \$8 \$6 pfet_03v3 L=0.28U W=4U AS=3P AD=3P PS=9.5U PD=9.5U
+M$4 \$5 \$2 \$5 \$6 pfet_03v3 L=0.28U W=2U AS=1.5P AD=1.5P PS=5.5U PD=5.5U
+M$5 \$4 \$2 \$4 \$6 pfet_03v3 L=0.28U W=2U AS=1.5P AD=1.5P PS=5.5U PD=5.5U
+M$6 \$5 \$3 \$5 \$6 pfet_03v3 L=0.28U W=2U AS=1.5P AD=1.5P PS=5.5U PD=5.5U
+M$7 \$5 \$2 \$9 \$6 pfet_03v3 L=0.28U W=4U AS=3P AD=3P PS=9.5U PD=9.5U
+M$8 \$4 \$2 \$8 \$6 pfet_03v3 L=0.28U W=4U AS=3P AD=3P PS=9.5U PD=9.5U
+M$9 \$5 \$3 \$9 SUB nfet_03v3 L=0.28U W=2U AS=1.5P AD=1.5P PS=5.5U PD=5.5U
+M$10 \$4 \$2 \$4 SUB nfet_03v3 L=0.28U W=1U AS=0.75P AD=0.75P PS=3.5U PD=3.5U
+M$11 \$4 \$3 \$8 SUB nfet_03v3 L=0.28U W=2U AS=1.5P AD=1.5P PS=5.5U PD=5.5U
+M$12 \$4 \$2 \$9 SUB nfet_03v3 L=0.28U W=2U AS=1.5P AD=1.5P PS=5.5U PD=5.5U
+M$13 \$5 \$2 \$8 SUB nfet_03v3 L=0.28U W=2U AS=1.5P AD=1.5P PS=5.5U PD=5.5U
+M$14 \$5 \$3 \$5 SUB nfet_03v3 L=0.28U W=1U AS=0.75P AD=0.75P PS=3.5U PD=3.5U
+M$15 \$4 \$3 \$4 SUB nfet_03v3 L=0.28U W=1U AS=0.75P AD=0.75P PS=3.5U PD=3.5U
+M$16 \$5 \$2 \$5 SUB nfet_03v3 L=0.28U W=1U AS=0.75P AD=0.75P PS=3.5U PD=3.5U
+.ENDS ina_chopper$2

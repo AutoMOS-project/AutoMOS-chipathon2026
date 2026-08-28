@@ -1,0 +1,29 @@
+** sch_path: /foss/designs/libs/core_ina/ina_ota/ina_ota.sch
+.subckt ina_ota VDD VTAIL VIN1 VOUT2 VOUT1 VIN2 VSS
+*.PININFO VIN1:I VIN2:I VTAIL:I VSS:I VOUT1:O VDD:I VOUT2:O
+M4 net4 net4 VDD VDD pfet_03v3 L=6u W=0.65u nf=1 m=1
+M1 net3 VTAIL VDD VDD pfet_03v3 L=2u W=8u nf=1 m=1
+M7 net5 net5 VDD VDD pfet_03v3 L=6u W=0.65u nf=1 m=1
+M2 net1 VIN1 net3 VDD pfet_03v3 L=0.28u W=15u nf=1 m=10
+M3 net2 VIN2 net3 VDD pfet_03v3 L=0.28u W=15u nf=1 m=10
+M10 net4 net1 VSS VSS nfet_03v3 L=6u W=1.8u nf=1 m=1
+M11 net5 net2 VSS VSS nfet_03v3 L=6u W=1.8u nf=1 m=1
+M8 net1 net1 VSS VSS nfet_03v3 L=6u W=1.8u nf=1 m=1
+M9 net2 net2 VSS VSS nfet_03v3 L=6u W=1.8u nf=1 m=1
+M5 VOUT1 net4 VDD VDD pfet_03v3 L=6u W=0.65u nf=1 m=1
+M13 VOUT1 net2 VSS VSS nfet_03v3 L=6u W=1.8u nf=1 m=1
+M12 VOUT2 net1 VSS VSS nfet_03v3 L=6u W=1.8u nf=1 m=1
+M6 VOUT2 net5 VDD VDD pfet_03v3 L=6u W=0.65u nf=1 m=1
+Mpota_dummy_L[1] VDD VDD VDD VDD pfet_03v3 L=6u W=0.65u nf=1 m=1
+Mpota_dummy_L[0] VDD VDD VDD VDD pfet_03v3 L=6u W=0.65u nf=1 m=1
+Mpdiff_dummy_L VDD VDD VDD VDD pfet_03v3 L=0.28u W=15u nf=1 m=1
+Mpota_dummy_R[1] VDD VDD VDD VDD pfet_03v3 L=6u W=0.65u nf=1 m=1
+Mpota_dummy_R[0] VDD VDD VDD VDD pfet_03v3 L=6u W=0.65u nf=1 m=1
+Mpdiff_dummy_R VDD VDD VDD VDD pfet_03v3 L=0.28u W=15u nf=1 m=1
+Mnota_dummy_L[1] VSS VSS VSS VSS nfet_03v3 L=6u W=1.8u nf=1 m=1
+Mnota_dummy_L[0] VSS VSS VSS VSS nfet_03v3 L=6u W=1.8u nf=1 m=1
+Mnota_dummy_R[1] VSS VSS VSS VSS nfet_03v3 L=6u W=1.8u nf=1 m=1
+Mnota_dummy_R[0] VSS VSS VSS VSS nfet_03v3 L=6u W=1.8u nf=1 m=1
+Mptail_dummy_L VDD VDD VDD VDD pfet_03v3 L=2u W=8u nf=1 m=1
+Mptail_dummy_R VDD VDD VDD VDD pfet_03v3 L=2u W=8u nf=1 m=1
+.ends

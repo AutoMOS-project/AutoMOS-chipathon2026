@@ -83,5 +83,4 @@ C {lab_wire.sym} 1370 -1430 0 0 {name=p8 sig_type=std_logic lab=Va}
 C {vsource.sym} 1340 -1520 2 0 {name=V1 value=3.3 savecurrent=false}
 C {vsource.sym} 1540 -1310 0 0 {name=V2 value=0.1 savecurrent=false}
 C {lab_wire.sym} 1720 -1430 0 0 {name=p1 sig_type=std_logic lab=Vb}
-C {noconn.sym} 1540 -1380 0 0 {name=l2}
-C {libs/core_ina/ina_pseudores/ina_pseudores2.sym} 1540 -1430 0 0 {name=x1}
+C {libs/core_ina/ina_pseudores/ina_pseudores.sym} 1540 -1430 0 0 {name=x1}

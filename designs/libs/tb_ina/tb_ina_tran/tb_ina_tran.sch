@@ -60,7 +60,7 @@ set color0 = white
 let Vdd  = 3.3
 let Vcm  = Vdd/2
 let Vamp = 0.5m
-let fecg = 10
+let fecg = 0.5
 
 *************************************
 ** CHOPPER PARAMETERS
@@ -84,8 +84,8 @@ let Vg 	  = 0.1
 ** TRANSIENT PARAMETERS
 *************************************
 
-let tstop = 2
-let tstep = 10u
+let tstop = 4
+let tstep = 100u
 
 *************************************
 ** SOURCES
@@ -181,7 +181,3 @@ C {lab_wire.sym} 1940 -1390 0 0 {name=p15 sig_type=std_logic lab=CLK}
 C {noconn.sym} 2360 -1350 0 1 {name=l10}
 C {noconn.sym} 2360 -1330 0 1 {name=l11}
 C {libs/core_ina/ina/ina.sym} 2110 -1340 0 0 {name=x1}
-C {launcher.sym} 310 -200 0 0 {name=h5
-descr="load waves" 
-tclcommand="xschem raw_read $netlist_dir/tb_ldo_dc1.raw; xschem raw_read $netlist_dir/tb_ldo_dc2.raw; xschem raw_read $netlist_dir/tb_ldo_dc3.raw; xschem raw_read $netlist_dir/tb_ldo_dc4.raw"
-}
