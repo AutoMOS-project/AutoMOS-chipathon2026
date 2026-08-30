@@ -1,0 +1,303 @@
+** sch_path: /foss/designs/layout_chipathon26/top_int.sch
+.subckt top_int voutn VSS VDD3V3 1ua Vcm Vb1V3 Vb0V94 voutp sw0 swm1 swm2 swm4 swm8 swm16 CLK IB VINP VINN VCM VG
+*.PININFO voutn:O VSS:B VDD3V3:B 1ua:B Vcm:B Vb1V3:B Vb0V94:B voutp:O sw0:B swm1:B swm2:B swm4:B swm8:B swm16:B CLK:I IB:I VINP:I
+*+ VINN:I VCM:I VG:I
+x1 outp outn VSS VDD3V3 inp inn 1ua Vb1V3 Vb0V94 Vcm folded_cascode_v3
+C5 inn vn cap_mim_2f0fF c_width=11e-6 c_length=11e-6 m=16
+C2 inp vp cap_mim_2f0fF c_width=11e-6 c_length=11e-6 m=16
+x4 VDD3V3 VSS inp outn sw0 sw0b switch
+x6 VDD3V3 VSS inp net1 swm16 swm16b switch
+x13 VDD3V3 VSS inp net2 swm4 swm4b switch
+x14 VDD3V3 VSS inp net3 swm2 swm2b switch
+x15 VDD3V3 VSS inp net4 swm1 swm1b switch
+C11 outn net1 cap_mim_2f0fF c_width=11e-6 c_length=11e-6 m=16
+C8 outn net2 cap_mim_2f0fF c_width=11e-6 c_length=11e-6 m=4
+C10 outn net3 cap_mim_2f0fF c_width=11e-6 c_length=11e-6 m=2
+C12 outn net4 cap_mim_2f0fF c_width=11e-6 c_length=11e-6
+C3 outn net5 cap_mim_2f0fF c_width=11e-6 c_length=11e-6 m=8
+x5 VDD3V3 VSS inp net5 swm8 swm8b switch
+x10 VDD3V3 VSS swm16 swm16b inverter
+x11 VDD3V3 VSS swm2 swm2b inverter
+x12 VDD3V3 VSS sw0 sw0b inverter
+x19 VDD3V3 VSS swm1 swm1b inverter
+x20 VDD3V3 VSS swm4 swm4b inverter
+x21 VDD3V3 VSS swm8 swm8b inverter
+C1 VSS VSS cap_mim_2f0fF c_width=11e-6 c_length=11e-6
+x2 VDD3V3 VSS inn outp sw0 sw0br switch
+x3 VDD3V3 VSS inn net6 swm16 swm16br switch
+x7 VDD3V3 VSS inn net7 swm4 swm4br switch
+x8 VDD3V3 VSS inn net8 swm2 swm2br switch
+x9 VDD3V3 VSS inn net9 swm1 swm1br switch
+C4 outp net6 cap_mim_2f0fF c_width=11e-6 c_length=11e-6 m=16
+C6 outp net7 cap_mim_2f0fF c_width=11e-6 c_length=11e-6 m=4
+C7 outp net8 cap_mim_2f0fF c_width=11e-6 c_length=11e-6 m=2
+C9 outp net9 cap_mim_2f0fF c_width=11e-6 c_length=11e-6
+C13 outp net10 cap_mim_2f0fF c_width=11e-6 c_length=11e-6 m=8
+x16 VDD3V3 VSS inn net10 swm8 swm8br switch
+x17 VDD3V3 VSS swm16 swm16br inverter
+x18 VDD3V3 VSS swm2 swm2br inverter
+x22 VDD3V3 VSS sw0 sw0br inverter
+x23 VDD3V3 VSS swm1 swm1br inverter
+x24 VDD3V3 VSS swm4 swm4br inverter
+x25 VDD3V3 VSS swm8 swm8br inverter
+C14 VSS VSS cap_mim_2f0fF c_width=11e-6 c_length=11e-6
+x26 VDD3V3 VSS outp voutp 1ua core_buffer
+x27 VDD3V3 VSS outn voutn 1ua core_buffer
+x30 VG VDD3V3 VINP VINN CLK vp vn VSS Vcm IB ina
+.ends
+
+* expanding   symbol:  /foss/designs/core_pga/folded_cascode/folded_cascode_v3.sym # of pins=10
+** sym_path: /foss/designs/core_pga/folded_cascode/folded_cascode_v3.sym
+** sch_path: /foss/designs/core_pga/folded_cascode/folded_cascode_v3.sch
+.subckt folded_cascode_v3 outp outn VSS VDD3V3 inp inn 1ua Vb1V3 Vb0V94 Vcm
+*.PININFO outp:O outn:O VSS:B VDD3V3:B inp:I inn:I 1ua:B Vb1V3:B Vb0V94:B Vcm:B
+M1 net3 inp net1 VDD3V3 pfet_03v3 L=1u W=10u nf=1
+M2 net2 inn net1 VDD3V3 pfet_03v3 L=1u W=10u nf=1
+M6 outn Vb0V94 net3 VSS nfet_03v3 L=1u W=4u nf=4
+M7 outp Vb0V94 net2 VSS nfet_03v3 L=1u W=4u nf=4
+M8 outn Vb1V3 net4 VDD3V3 pfet_03v3 L=1u W=4u nf=4
+M9 outp Vb1V3 net5 VDD3V3 pfet_03v3 L=1u W=4u nf=4
+M3 net1 Vbtail VDD3V3 VDD3V3 pfet_03v3 L=1u W=32u nf=1
+M4 net3 Vbsnk VSS VSS nfet_03v3 L=1u W=9u nf=4
+M5 net2 Vbsnk VSS VSS nfet_03v3 L=1u W=9u nf=4
+M10 net4 Vbfb VDD3V3 VDD3V3 pfet_03v3 L=1u W=4u nf=4
+M11 net5 Vbfb VDD3V3 VDD3V3 pfet_03v3 L=1u W=4u nf=4
+M20 net8 net8 VDD3V3 VDD3V3 pfet_03v3 L=1u W=3u nf=1
+M21 net8 outp net6 VSS nfet_03v3 L=1u W=10u nf=1
+M22 Vbfb Vcm net6 VSS nfet_03v3 L=1u W=10u nf=1
+M23 net6 Ib VSS VSS nfet_03v3 L=1u W=8u nf=1
+M24 Vbfb Vcm net7 VSS nfet_03v3 L=1u W=10u nf=1
+M25 net9 outn net7 VSS nfet_03v3 L=1u W=10u nf=1
+M26 net7 Ib VSS VSS nfet_03v3 L=1u W=8u nf=1
+M27 Ib Ib VSS VSS nfet_03v3 L=1u W=8u nf=1
+M12 1ua 1ua VSS VSS nfet_03v3 L=1u W=1u nf=1
+M13 Vbtail 1ua VSS VSS nfet_03v3 L=1u W=3u nf=1
+M14 Vbtail Vbtail VDD3V3 VDD3V3 pfet_03v3 L=1u W=6u nf=1
+M15 Vbsnk Vbsnk VSS VSS nfet_03v3 L=1u W=4u nf=1
+M16 Vbsnk Vbtail VDD3V3 VDD3V3 pfet_03v3 L=1u W=11u nf=1
+M17 net9 net9 VDD3V3 VDD3V3 pfet_03v3 L=1u W=3u nf=1
+M18 Vbfb Vbfb VDD3V3 VDD3V3 pfet_03v3 L=1u W=3u nf=1
+M28 Ib Vbtail VDD3V3 VDD3V3 pfet_03v3 L=1u W=4.9u nf=1
+.ends
+
+
+* expanding   symbol:  /foss/designs/core_pga/switch/switch.sym # of pins=6
+** sym_path: /foss/designs/core_pga/switch/switch.sym
+** sch_path: /foss/designs/core_pga/switch/switch.sch
+.subckt switch VDD3V3 VSS in out clk clkb
+*.PININFO VSS:B VDD3V3:B clk:I clkb:I in:B out:B
+M5 in clkb out VDD3V3 pfet_03v3 L=0.36u W=4.5u nf=1
+M7 out clk in VSS nfet_03v3 L=0.36u W=1.3u nf=1
+M1 VDD3V3 VDD3V3 VDD3V3 VDD3V3 pfet_03v3 L=0.36u W=4.5u nf=1 m=2
+M2 VSS VSS VSS VSS nfet_03v3 L=0.36u W=1.3u nf=1 m=2
+.ends
+
+
+* expanding   symbol:  /foss/designs/core_pga/inverter/inverter.sym # of pins=4
+** sym_path: /foss/designs/core_pga/inverter/inverter.sym
+** sch_path: /foss/designs/core_pga/inverter/inverter.sch
+.subckt inverter VDD3V3 VSS in out
+*.PININFO VSS:B VDD3V3:B in:B out:B
+M1 out in VDD3V3 VDD3V3 pfet_03v3 L=0.36u W=6u nf=1 m=2
+M2 out in VSS VSS nfet_03v3 L=0.36u W=3u nf=1 m=2
+M3 VSS VSS VSS VSS nfet_03v3 L=0.36u W=3u nf=1 m=2
+M4 VDD3V3 VDD3V3 VDD3V3 VDD3V3 pfet_03v3 L=0.36u W=6u nf=1 m=2
+.ends
+
+
+* expanding   symbol:  /foss/designs/core_pga/buffer/core_buffer.sym # of pins=5
+** sym_path: /foss/designs/core_pga/buffer/core_buffer.sym
+** sch_path: /foss/designs/core_pga/buffer/core_buffer.sch
+.subckt core_buffer VDD3V3 VSS in out Vb_i1u
+*.PININFO out:O VSS:B VDD3V3:B in:I Vb_i1u:B
+M42 net1 net1 VDD3V3 VDD3V3 pfet_03v3 L=1u W=1u nf=1 m=6
+M44 net1 in net2 VSS nfet_03v3 L=1u W=1u nf=1 m=6
+M46 net2 Vb_i1u VSS VSS nfet_03v3 L=1u W=1u nf=1 m=10
+M1 out net1 VDD3V3 VDD3V3 pfet_03v3 L=1u W=1u nf=1 m=6
+M2 out out net2 VSS nfet_03v3 L=1u W=1u nf=1 m=6
+.ends
+
+
+* expanding   symbol:  /foss/designs/core_ina/ina.sym # of pins=10
+** sym_path: /foss/designs/core_ina/ina.sym
+** sch_path: /foss/designs/core_ina/ina.sch
+.subckt ina VG VDD3V3 VINP VINN CLK VOUTP VOUTN VSS VCM IB
+*.PININFO CLK:I VINP:I VINN:I VDD3V3:I VSS:I VCM:I IB:I VG:I VOUTP:O VOUTN:O
+x3 VDD3V3 CLK net1 net2 VSS ina_clockgen
+MB1 IB IB VSS VSS nfet_03v3 L=2u W=3.2u nf=1
+Mnbias_dummy_L VSS VSS VSS VSS nfet_03v3 L=2u W=3.2u nf=1
+Mnbias_dummy_R VSS VSS VSS VSS nfet_03v3 L=2u W=3.2u nf=1
+x1 VG VINP VDD3V3 net3 VINN net4 net1 net2 VCM IB VSS ina_ccia1
+x2 VG net3 VDD3V3 VOUTP net4 VOUTN net1 net2 VCM IB VSS ina_ccia2
+.ends
+
+
+* expanding   symbol:  /foss/designs/core_ina/ina_clockgen.sym # of pins=5
+** sym_path: /foss/designs/core_ina/ina_clockgen.sym
+** sch_path: /foss/designs/core_ina/ina_clockgen.sch
+.subckt ina_clockgen VDD3V3 CLKIN CLKA CLKB VSS
+*.PININFO CLKIN:I VDD3V3:I VSS:I CLKA:O CLKB:O
+x1 VDD3V3 net4 CLKIN net1 VSS ina_nand
+x2 VDD3V3 net6 net3 net2 VSS ina_nand
+x3 VDD3V3 CLKIN net2 VSS ina_inv
+x4 VDD3V3 net4 net5 VSS ina_inv
+x5 VDD3V3 net5 net3 VSS ina_inv
+x6 VDD3V3 net3 CLKA VSS ina_inv
+x7 VDD3V3 net6 net7 VSS ina_inv
+x8 VDD3V3 net7 net1 VSS ina_inv
+x9 VDD3V3 net1 CLKB VSS ina_inv
+.ends
+
+
+* expanding   symbol:  /foss/designs/core_ina/ina_ccia1.sym # of pins=11
+** sym_path: /foss/designs/core_ina/ina_ccia1.sym
+** sch_path: /foss/designs/core_ina/ina_ccia1.sch
+.subckt ina_ccia1 VG VINP VDD3V3 VOUTP VINN VOUTN CLKA CLKB VCM VB VSS
+*.PININFO VINP:I VINN:I VDD3V3:I VSS:I VCM:I VB:I VG:I VOUTP:O VOUTN:O CLKA:I CLKB:I
+x2 VDD3V3 net5 net7 net6 VCM VB VSS ina_cmfb
+x3 net2 net3 VDD3V3 VSS CLKB CLKA net1 net4 ina_chopper
+x4 VOUTN net6 VDD3V3 VSS CLKB CLKA VOUTP net7 ina_chopper
+CIN1 VINP net3 cap_mim_2f0fF c_width=20e-6 c_length=20e-6 m=5
+CIN2 VINN net4 cap_mim_2f0fF c_width=20e-6 c_length=20e-6 m=5
+CFB1 net3 VOUTP cap_mim_2f0fF c_width=10e-6 c_length=10e-6
+CFB2 net4 VOUTN cap_mim_2f0fF c_width=10e-6 c_length=10e-6
+x1 VDD3V3 net5 net1 net7 net6 net2 VSS ina_ota
+COUT VOUTP VOUTN cap_mim_2f0fF c_width=10e-6 c_length=10e-6 m=5
+x5 net3 VOUTP VG ina_pseudores
+x6 net4 VOUTN VG ina_pseudores
+.ends
+
+
+* expanding   symbol:  /foss/designs/core_ina/ina_ccia2.sym # of pins=11
+** sym_path: /foss/designs/core_ina/ina_ccia2.sym
+** sch_path: /foss/designs/core_ina/ina_ccia2.sch
+.subckt ina_ccia2 VG VINP VDD3V3 VOUTP VINN VOUTN CLKA CLKB VCM VB VSS
+*.PININFO VINP:I VINN:I VDD3V3:I VSS:I VCM:I VB:I VG:I VOUTP:O VOUTN:O CLKA:I CLKB:I
+x2 VDD3V3 net5 net7 net6 VCM VB VSS ina_cmfb
+x3 net2 net3 VDD3V3 VSS CLKB CLKA net1 net4 ina_chopper
+x4 VOUTN net6 VDD3V3 VSS CLKB CLKA VOUTP net7 ina_chopper
+CIN3 VINP net3 cap_mim_2f0fF c_width=10e-6 c_length=10e-6 m=5
+CIN4 VINN net4 cap_mim_2f0fF c_width=10e-6 c_length=10e-6 m=5
+CFB1 net3 VOUTP cap_mim_2f0fF c_width=10e-6 c_length=10e-6
+CFB2 net4 VOUTN cap_mim_2f0fF c_width=10e-6 c_length=10e-6
+x1 VDD3V3 net5 net1 net7 net6 net2 VSS ina_ota
+COUT VOUTP VOUTN cap_mim_2f0fF c_width=10e-6 c_length=10e-6 m=5
+x6 net4 VOUTN VG ina_pseudores
+x5 net3 VOUTP VG ina_pseudores
+.ends
+
+
+* expanding   symbol:  /foss/designs/core_ina/ina_nand.sym # of pins=5
+** sym_path: /foss/designs/core_ina/ina_nand.sym
+** sch_path: /foss/designs/core_ina/ina_nand.sch
+.subckt ina_nand VDD3V3 Vout Vin1 Vin2 VSS
+*.PININFO VDD3V3:I Vin1:I Vin2:I VSS:I Vout:O
+MN1 Vout Vin1 VDD3V3 VDD3V3 pfet_03v3 L=0.28u W=2u nf=1
+MN2 Vout Vin2 VDD3V3 VDD3V3 pfet_03v3 L=0.28u W=2u nf=1
+MN3 Vout Vin1 net1 VSS nfet_03v3 L=0.28u W=2u nf=1
+MN4 net1 Vin2 VSS VSS nfet_03v3 L=0.28u W=2u nf=1
+.ends
+
+
+* expanding   symbol:  /foss/designs/core_ina/ina_inv.sym # of pins=4
+** sym_path: /foss/designs/core_ina/ina_inv.sym
+** sch_path: /foss/designs/core_ina/ina_inv.sch
+.subckt ina_inv VDD3V3 Vin Vout VSS
+*.PININFO VDD3V3:I VSS:I Vin:I Vout:O
+MI1 Vout Vin VDD3V3 VDD3V3 pfet_03v3 L=0.28u W=2u nf=1
+MI2 Vout Vin VSS VSS nfet_03v3 L=0.28u W=1u nf=1
+.ends
+
+
+* expanding   symbol:  /foss/designs/core_ina/ina_cmfb.sym # of pins=7
+** sym_path: /foss/designs/core_ina/ina_cmfb.sym
+** sch_path: /foss/designs/core_ina/ina_cmfb.sch
+.subckt ina_cmfb VDD3V3 VCMFB VIN2 VIN1 VCM VB VSS
+*.PININFO VIN1:I VIN2:I VCMFB:O VCM:I VSS:I VB:I VDD3V3:I
+MC1 VCMFB VCMFB VDD3V3 VDD3V3 pfet_03v3 L=2u W=8u nf=1
+MC3 VCMFB VIN1 net1 VSS nfet_03v3 L=2u W=1.6u nf=1
+MC4 net3 VCM net1 VSS nfet_03v3 L=2u W=1.6u nf=1
+MC7 net1 VB VSS VSS nfet_03v3 L=2u W=3.2u nf=1
+MC5 net3 VCM net2 VSS nfet_03v3 L=2u W=1.6u nf=1
+MC6 VCMFB VIN2 net2 VSS nfet_03v3 L=2u W=1.6u nf=1
+MC8 net2 VB VSS VSS nfet_03v3 L=2u W=3.2u nf=1
+MC2 net3 net3 VDD3V3 VDD3V3 pfet_03v3 L=2u W=8u nf=1
+Mndiff_dummy_L[1] VSS VSS VSS VSS nfet_03v3 L=2u W=1.6u nf=1
+Mndiff_dummy_L[0] VSS VSS VSS VSS nfet_03v3 L=2u W=1.6u nf=1
+Mndiff_dummy_R[1] VSS VSS VSS VSS nfet_03v3 L=2u W=1.6u nf=1
+Mndiff_dummy_R[0] VSS VSS VSS VSS nfet_03v3 L=2u W=1.6u nf=1
+Mpcmfb_dummy_L VDD3V3 VDD3V3 VDD3V3 VDD3V3 pfet_03v3 L=2u W=8u nf=1
+Mpcfmb_dummy_R VDD3V3 VDD3V3 VDD3V3 VDD3V3 pfet_03v3 L=2u W=8u nf=1
+Mntail_dummy_L VSS VSS VSS VSS nfet_03v3 L=2u W=3.2u nf=1
+Mntail_dummy_R VSS VSS VSS VSS nfet_03v3 L=2u W=3.2u nf=1
+.ends
+
+
+* expanding   symbol:  /foss/designs/core_ina/ina_chopper.sym # of pins=8
+** sym_path: /foss/designs/core_ina/ina_chopper.sym
+** sch_path: /foss/designs/core_ina/ina_chopper.sch
+.subckt ina_chopper VOUT2 VIN1 VDD3V3 VSS CLKB CLKA VOUT1 VIN2
+*.PININFO VIN1:I VIN2:I CLKB:I VOUT2:O CLKA:I VOUT1:O VDD3V3:I VSS:I
+MT2 VOUT1 CLKA VIN1 VSS nfet_03v3 L=0.28u W=2u nf=1
+MT1 VOUT1 CLKB VIN1 VDD3V3 pfet_03v3 L=0.28u W=4u nf=1
+MT4 VOUT2 CLKB VIN1 VSS nfet_03v3 L=0.28u W=2u nf=1
+MT3 VOUT2 CLKA VIN1 VDD3V3 pfet_03v3 L=0.28u W=4u nf=1
+MT6 VOUT2 CLKA VIN2 VSS nfet_03v3 L=0.28u W=2u nf=1
+MT5 VOUT2 CLKB VIN2 VDD3V3 pfet_03v3 L=0.28u W=4u nf=1
+MT8 VOUT1 CLKB VIN2 VSS nfet_03v3 L=0.28u W=2u nf=1
+MT7 VOUT1 CLKA VIN2 VDD3V3 pfet_03v3 L=0.28u W=4u nf=1
+MT2_dummy VOUT1 CLKB VOUT1 VSS nfet_03v3 L=0.28u W=1u nf=1
+MT1_dummy VOUT1 CLKA VOUT1 VDD3V3 pfet_03v3 L=0.28u W=2u nf=1
+MT4_dummy VOUT2 CLKA VOUT2 VSS nfet_03v3 L=0.28u W=1u nf=1
+MT3_dummy VOUT2 CLKB VOUT2 VDD3V3 pfet_03v3 L=0.28u W=2u nf=1
+MT5_dummy VOUT2 CLKA VOUT2 VDD3V3 pfet_03v3 L=0.28u W=2u nf=1
+MT6_dummy VOUT2 CLKB VOUT2 VSS nfet_03v3 L=0.28u W=1u nf=1
+MT7_dummy VOUT1 CLKB VOUT1 VDD3V3 pfet_03v3 L=0.28u W=2u nf=1
+MT8_dummy VOUT1 CLKA VOUT1 VSS nfet_03v3 L=0.28u W=1u nf=1
+.ends
+
+
+* expanding   symbol:  /foss/designs/core_ina/ina_ota.sym # of pins=7
+** sym_path: /foss/designs/core_ina/ina_ota.sym
+** sch_path: /foss/designs/core_ina/ina_ota.sch
+.subckt ina_ota VDD3V3 VTAIL VIN1 VOUT2 VOUT1 VIN2 VSS
+*.PININFO VIN1:I VIN2:I VTAIL:I VSS:I VOUT1:O VDD3V3:I VOUT2:O
+M4 net4 net4 VDD3V3 VDD3V3 pfet_03v3 L=6u W=0.65u nf=1
+M1 net3 VTAIL VDD3V3 VDD3V3 pfet_03v3 L=2u W=8u nf=1
+M7 net5 net5 VDD3V3 VDD3V3 pfet_03v3 L=6u W=0.65u nf=1
+M2 net1 VIN1 net3 VDD3V3 pfet_03v3 L=0.28u W=15u nf=1 m=10
+M3 net2 VIN2 net3 VDD3V3 pfet_03v3 L=0.28u W=15u nf=1 m=10
+M10 net4 net1 VSS VSS nfet_03v3 L=6u W=1.8u nf=1
+M11 net5 net2 VSS VSS nfet_03v3 L=6u W=1.8u nf=1
+M8 net1 net1 VSS VSS nfet_03v3 L=6u W=1.8u nf=1
+M9 net2 net2 VSS VSS nfet_03v3 L=6u W=1.8u nf=1
+M5 VOUT1 net4 VDD3V3 VDD3V3 pfet_03v3 L=6u W=0.65u nf=1
+M13 VOUT1 net2 VSS VSS nfet_03v3 L=6u W=1.8u nf=1
+M12 VOUT2 net1 VSS VSS nfet_03v3 L=6u W=1.8u nf=1
+M6 VOUT2 net5 VDD3V3 VDD3V3 pfet_03v3 L=6u W=0.65u nf=1
+Mpota_dummy_L[1] VDD3V3 VDD3V3 VDD3V3 VDD3V3 pfet_03v3 L=6u W=0.65u nf=1
+Mpota_dummy_L[0] VDD3V3 VDD3V3 VDD3V3 VDD3V3 pfet_03v3 L=6u W=0.65u nf=1
+Mpdiff_dummy_L VDD3V3 VDD3V3 VDD3V3 VDD3V3 pfet_03v3 L=0.28u W=15u nf=1
+Mpota_dummy_R[1] VDD3V3 VDD3V3 VDD3V3 VDD3V3 pfet_03v3 L=6u W=0.65u nf=1
+Mpota_dummy_R[0] VDD3V3 VDD3V3 VDD3V3 VDD3V3 pfet_03v3 L=6u W=0.65u nf=1
+Mpdiff_dummy_R VDD3V3 VDD3V3 VDD3V3 VDD3V3 pfet_03v3 L=0.28u W=15u nf=1
+Mnota_dummy_L[1] VSS VSS VSS VSS nfet_03v3 L=6u W=1.8u nf=1
+Mnota_dummy_L[0] VSS VSS VSS VSS nfet_03v3 L=6u W=1.8u nf=1
+Mnota_dummy_R[1] VSS VSS VSS VSS nfet_03v3 L=6u W=1.8u nf=1
+Mnota_dummy_R[0] VSS VSS VSS VSS nfet_03v3 L=6u W=1.8u nf=1
+Mptail_dummy_L VDD3V3 VDD3V3 VDD3V3 VDD3V3 pfet_03v3 L=2u W=8u nf=1
+Mptail_dummy_R VDD3V3 VDD3V3 VDD3V3 VDD3V3 pfet_03v3 L=2u W=8u nf=1
+.ends
+
+
+* expanding   symbol:  /foss/designs/core_ina/ina_pseudores.sym # of pins=3
+** sym_path: /foss/designs/core_ina/ina_pseudores.sym
+** sch_path: /foss/designs/core_ina/ina_pseudores.sch
+.subckt ina_pseudores VA VB VG
+*.PININFO VG:I VA:B VB:B
+MR1 VA VG VG VG nfet_03v3 L=5u W=0.5u nf=1
+MR2 net2 VG VG VG nfet_03v3 L=5u W=0.5u nf=1
+MR3 net2 net1 net1 net1 nfet_03v3 L=12u W=0.5u nf=1
+MR4 VB net1 net1 net1 nfet_03v3 L=12u W=0.5u nf=1
+.ends
+
