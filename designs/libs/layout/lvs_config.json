@@ -21,7 +21,7 @@
         ""
     ],
     "LVS_SPICE_FILES": [
-        ""
+        "$UPRJ_ROOT/designs/libs/layout/layout_top/top_int.spice"
     ],
     "LVS_VERILOG_FILES": [
         ""
