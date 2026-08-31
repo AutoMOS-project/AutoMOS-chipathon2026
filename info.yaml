@@ -16,7 +16,7 @@ project:
   team: "AutoMOS"
   discord: "rodrigom99"
   description: "Wearable-grade CMOS 180nm analog front-end for continuous ECG monitoring with programmable gain and high common-mode rejection."
-  lvs_config: "./AutoECG/designs/libs/lvs/lvs_config.json"
+  lvs_config: "./AutoECG/designs/libs/layout/lvs_config.json"
 
 pins:
   - name: VDD3V3
